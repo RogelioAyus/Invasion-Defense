@@ -1,0 +1,168 @@
+[gd_scene load_steps=16 format=3 uid="uid://dudbgtkinrr30"]
+
+[ext_resource type="Script" path="res://scripts/explosion_missile.gd" id="1_fhofq"]
+[ext_resource type="Script" path="res://scripts/explo.gd" id="2_fhy53"]
+[ext_resource type="Material" uid="uid://cfivf1diefp6x" path="res://customs/add_color_material.tres" id="2_wmoha"]
+[ext_resource type="AudioStream" uid="uid://b6touh3bbakax" path="res://Music/sfx/explosion_missile.wav" id="4_mbect"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_faj5p"]
+radius = 297.015
+
+[sub_resource type="Animation" id="Animation_4fdxj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("explodeNode:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explo:monitorable")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_v3dpa"]
+resource_name = "explode"
+length = 0.4
+step = 0.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.389828),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"quw"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("explodeNode:emitting")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("explo:monitorable")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0188904),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("au")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(-0.0198592, 0.00048437),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eyfb4"]
+_data = {
+"RESET": SubResource("Animation_4fdxj"),
+"explode": SubResource("Animation_v3dpa")
+}
+
+[sub_resource type="Gradient" id="Gradient_cy05g"]
+offsets = PackedFloat32Array(0.129032, 0.349462, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0.919135, 0.133138, 1, 1, 0, 0.133333, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7ymvc"]
+gradient = SubResource("Gradient_cy05g")
+
+[sub_resource type="Curve" id="Curve_8fo0y"]
+max_value = 3.0
+_data = [Vector2(0.011194, 0), 0.0, 0.0, 0, 0, Vector2(0.414179, 2.84211), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_om7bo"]
+curve = SubResource("Curve_8fo0y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g7p0o"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 10.0
+initial_velocity_max = 1000.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_om7bo")
+color_ramp = SubResource("GradientTexture1D_7ymvc")
+
+[sub_resource type="Gradient" id="Gradient_j5gn4"]
+offsets = PackedFloat32Array(0, 0.657588)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hw4a5"]
+gradient = SubResource("Gradient_j5gn4")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="explosion_missile" type="Node2D"]
+script = ExtResource("1_fhofq")
+
+[node name="explo" type="Area2D" parent="."]
+monitoring = false
+script = ExtResource("2_fhy53")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="explo"]
+shape = SubResource("CircleShape2D_faj5p")
+
+[node name="explodeAnimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eyfb4")
+}
+autoplay = "explode"
+
+[node name="explodeNode" type="GPUParticles2D" parent="."]
+material = ExtResource("2_wmoha")
+emitting = false
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_g7p0o")
+texture = SubResource("GradientTexture2D_hw4a5")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+trail_lifetime = 10.0
+
+[node name="au" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mbect")
+volume_db = 10.0
+bus = &"Sound"

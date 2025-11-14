@@ -1,0 +1,286 @@
+[gd_scene load_steps=13 format=3 uid="uid://dennb1jm7icsd"]
+
+[ext_resource type="FontFile" uid="uid://bwe56bqcr1gwg" path="res://Fonts/Minecraft.ttf" id="1_qepfn"]
+[ext_resource type="Script" path="res://scripts/paused.gd" id="1_tf32s"]
+[ext_resource type="FontFile" uid="uid://dt45xpxux6otb" path="res://Fonts/Bitsential.otf" id="4_2o3io"]
+[ext_resource type="Texture2D" uid="uid://djex2yrovpnfs" path="res://sprites/Guide.png" id="5_ivcvl"]
+[ext_resource type="PackedScene" uid="uid://dyb0ojqqjtjqw" path="res://TSCN Scenes/player.tscn" id="5_v4cwt"]
+[ext_resource type="Script" path="res://scripts/MainMenuQuitting.gd" id="6_snggm"]
+[ext_resource type="Script" path="res://scripts/AreYouSure.gd" id="6_ykocp"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_lu34n"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4hp2b"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tv4ae"]
+bg_color = Color(0.6, 0.6, 0.6, 0.462745)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mktf7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_k10bc"]
+
+[node name="Paused" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tf32s")
+
+[node name="Control" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(0, 0, 0, 0.803922)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1881.0
+offset_bottom = 1043.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_lu34n")
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Control2"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 901.0
+offset_top = 454.0
+offset_right = 1039.0
+offset_bottom = 674.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Control" parent="Control2/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="Control2/MarginContainer/Title"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -183.0
+offset_top = -146.5
+offset_right = 183.0
+offset_bottom = 28.5
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_qepfn")
+theme_override_font_sizes/font_size = 95
+text = "Paused
+"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control2/MarginContainer"]
+layout_mode = 2
+
+[node name="start" type="Button" parent="Control2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2o3io")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_4hp2b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tv4ae")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mktf7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_k10bc")
+text = "Continue
+"
+
+[node name="Settings" type="Button" parent="Control2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2o3io")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_4hp2b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tv4ae")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mktf7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_k10bc")
+text = "Settings
+"
+
+[node name="Main Menu" type="Button" parent="Control2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2o3io")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_4hp2b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tv4ae")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mktf7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_k10bc")
+text = "Main Menu"
+
+[node name="Exit" type="Button" parent="Control2/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_2o3io")
+theme_override_font_sizes/font_size = 41
+theme_override_styles/normal = SubResource("StyleBoxTexture_4hp2b")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tv4ae")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mktf7")
+theme_override_styles/focus = SubResource("StyleBoxTexture_k10bc")
+text = "Exit"
+
+[node name="Player" parent="." instance=ExtResource("5_v4cwt")]
+isGameOn = false
+
+[node name="Guide" type="Sprite2D" parent="."]
+position = Vector2(1478, 868)
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("5_ivcvl")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 21.0
+offset_top = 796.0
+offset_right = 2016.0
+offset_bottom = 1283.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("4_2o3io")
+theme_override_font_sizes/font_size = 99
+text = "Tips:
+-While using Missiles or laser, press left mouse to fire.
+-YOu can skip dialogue by pressing Shift while on dialogue
+"
+
+[node name="AreYouSure" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 1.0
+offset_right = 60.0
+offset_bottom = 41.0
+script = ExtResource("6_ykocp")
+
+[node name="TextureRect2" type="TextureRect" parent="AreYouSure"]
+modulate = Color(0, 0, 0, 0.537255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -1.0
+offset_right = 1861.0
+offset_bottom = 1042.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_lu34n")
+
+[node name="Yes" type="Button" parent="AreYouSure"]
+layout_mode = 0
+offset_left = 1089.0
+offset_top = 655.0
+offset_right = 1261.0
+offset_bottom = 798.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("4_2o3io")
+theme_override_font_sizes/font_size = 99
+text = "Yes"
+
+[node name="no" type="Button" parent="AreYouSure"]
+layout_mode = 0
+offset_left = 1256.0
+offset_top = 656.0
+offset_right = 1402.0
+offset_bottom = 799.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("4_2o3io")
+theme_override_font_sizes/font_size = 99
+text = "No
+"
+
+[node name="Label" type="Label" parent="AreYouSure"]
+layout_mode = 0
+offset_left = 1023.0
+offset_top = 592.0
+offset_right = 1394.0
+offset_bottom = 641.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 99
+text = "Exiting the game will lose your progress forever.
+Are you sure?"
+
+[node name="MainMenuQuitting" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 46.0
+offset_top = -48.0
+offset_right = 86.0
+offset_bottom = -8.0
+script = ExtResource("6_snggm")
+
+[node name="TextureRect2" type="TextureRect" parent="MainMenuQuitting"]
+modulate = Color(0, 0, 0, 0.537255)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = 47.0
+offset_right = 1833.0
+offset_bottom = 1090.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_lu34n")
+
+[node name="Save" type="Button" parent="MainMenuQuitting"]
+layout_mode = 0
+offset_left = 1101.0
+offset_top = 674.0
+offset_right = 1273.0
+offset_bottom = 817.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("4_2o3io")
+theme_override_font_sizes/font_size = 99
+text = "Save"
+
+[node name="Delete" type="Button" parent="MainMenuQuitting"]
+layout_mode = 0
+offset_left = 1269.0
+offset_top = 675.0
+offset_right = 1565.0
+offset_bottom = 818.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("4_2o3io")
+theme_override_font_sizes/font_size = 99
+text = "Delete"
+
+[node name="Go Back" type="Button" parent="MainMenuQuitting"]
+layout_mode = 0
+offset_left = 1174.0
+offset_top = 725.0
+offset_right = 1470.0
+offset_bottom = 868.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("4_2o3io")
+theme_override_font_sizes/font_size = 99
+text = "Back"
+
+[node name="Label" type="Label" parent="MainMenuQuitting"]
+layout_mode = 0
+offset_left = 1023.0
+offset_top = 592.0
+offset_right = 1394.0
+offset_bottom = 641.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 99
+text = "Would you like to save your data to the leaderboard?
+You cant continue to grind if you press yes."
+
+[connection signal="pressed" from="Control2/MarginContainer/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="Control2/MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Control2/MarginContainer/VBoxContainer/Main Menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="Control2/MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="AreYouSure/Yes" to="AreYouSure" method="_on_yes_pressed"]
+[connection signal="pressed" from="AreYouSure/no" to="AreYouSure" method="_on_no_pressed"]
+[connection signal="pressed" from="MainMenuQuitting/Save" to="MainMenuQuitting" method="_on_save_pressed"]
+[connection signal="pressed" from="MainMenuQuitting/Delete" to="MainMenuQuitting" method="_on_delete_pressed"]
+[connection signal="pressed" from="MainMenuQuitting/Go Back" to="MainMenuQuitting" method="_on_go_back_pressed"]

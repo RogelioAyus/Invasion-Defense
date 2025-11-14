@@ -1,0 +1,223 @@
+[gd_scene load_steps=21 format=3 uid="uid://dpi4y0gxty0l5"]
+
+[ext_resource type="Script" path="res://scripts/dialogue.gd" id="1_tauyy"]
+[ext_resource type="Texture2D" uid="uid://8vsm8ntc00ft" path="res://sprites/portrait/Portrait_frame.png" id="2_4u33t"]
+[ext_resource type="Texture2D" uid="uid://cvkowk8rq8dtt" path="res://sprites/portrait/bv2.png" id="3_ir27x"]
+[ext_resource type="Texture2D" uid="uid://c6i7u4jint0l8" path="res://sprites/portrait/Spirit_cursor2.png" id="3_soj3m"]
+[ext_resource type="Texture2D" uid="uid://cpt22ya5685f4" path="res://sprites/portrait/GalacticVessel_portrait2.png" id="4_bc053"]
+[ext_resource type="Texture2D" uid="uid://cwh0t8jtb1uxj" path="res://sprites/portrait/Spirit_cursor.png" id="4_fky74"]
+[ext_resource type="Texture2D" uid="uid://cxtg2b48ru21s" path="res://sprites/portrait/bv.png" id="4_tv7g4"]
+[ext_resource type="Texture2D" uid="uid://c1jjd8fe7uqi3" path="res://sprites/portrait/GalacticVessel_protrait.png" id="5_0iuag"]
+[ext_resource type="Texture2D" uid="uid://ddjpyu6yseuca" path="res://icon.svg" id="6_ghq8f"]
+[ext_resource type="Material" uid="uid://cfivf1diefp6x" path="res://customs/add_color_material.tres" id="7_w30mq"]
+[ext_resource type="FontFile" uid="uid://dt45xpxux6otb" path="res://Fonts/Bitsential.otf" id="9_1uk4m"]
+[ext_resource type="AudioStream" uid="uid://bcm2bkrq71ytm" path="res://Music/sfx/galacticVessel_voice.wav" id="10_o8y8p"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_60uhv"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_46cno"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ht1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ir27x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tv7g4")
+}],
+"loop": true,
+"name": &"bv",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"bv2",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"bv3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_bc053")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_0iuag")
+}],
+"loop": true,
+"name": &"galacticVessel",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_soj3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fky74")
+}],
+"loop": true,
+"name": &"spiritCursor",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_ghq8f")
+}],
+"loop": true,
+"name": &"test",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_nbyob"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_33ap1"]
+blend_mode = 1
+
+[sub_resource type="Animation" id="Animation_ntppm"]
+resource_name = "RESET"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0823529, 0, 0.145098, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jhggc"]
+resource_name = "Tra"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0823529, 0, 0.145098, 0.419608), Color(0.0823529, 0, 0.145098, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y6dms"]
+_data = {
+"RESET": SubResource("Animation_ntppm"),
+"Tra": SubResource("Animation_jhggc")
+}
+
+[node name="Dialogue" type="CanvasLayer"]
+process_mode = 3
+layer = 8
+script = ExtResource("1_tauyy")
+dialogueValueIndex = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.0823529, 0, 0.145098, 0)
+z_index = -10
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_60uhv")
+
+[node name="Node2D" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="portrait" type="Sprite2D" parent="Node2D"]
+z_index = -2
+texture_filter = 1
+position = Vector2(336, 524)
+scale = Vector2(3, 3)
+texture = ExtResource("2_4u33t")
+
+[node name="portrait" type="AnimatedSprite2D" parent="Node2D/portrait"]
+unique_name_in_owner = true
+z_index = 2
+material = SubResource("CanvasItemMaterial_46cno")
+sprite_frames = SubResource("SpriteFrames_0ht1t")
+animation = &"galacticVessel"
+autoplay = "galacticVessel"
+
+[node name="red" type="AnimatedSprite2D" parent="Node2D/portrait/portrait"]
+unique_name_in_owner = true
+self_modulate = Color(1, 0, 0, 1)
+z_index = -1
+material = ExtResource("7_w30mq")
+position = Vector2(2.33334, 0.333328)
+sprite_frames = SubResource("SpriteFrames_0ht1t")
+animation = &"galacticVessel"
+autoplay = "galacticVessel"
+frame_progress = 0.252031
+
+[node name="blue" type="AnimatedSprite2D" parent="Node2D/portrait/portrait"]
+unique_name_in_owner = true
+self_modulate = Color(0, 0, 1, 1)
+z_index = -1
+material = SubResource("CanvasItemMaterial_nbyob")
+position = Vector2(-2.66666, 0)
+sprite_frames = SubResource("SpriteFrames_0ht1t")
+animation = &"galacticVessel"
+autoplay = "galacticVessel"
+
+[node name="green" type="AnimatedSprite2D" parent="Node2D/portrait/portrait"]
+unique_name_in_owner = true
+self_modulate = Color(0, 1, 0, 1)
+z_index = -1
+material = SubResource("CanvasItemMaterial_33ap1")
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_0ht1t")
+animation = &"galacticVessel"
+autoplay = "galacticVessel"
+
+[node name="Text" type="Label" parent="Node2D"]
+process_mode = 3
+offset_left = 582.0
+offset_top = 373.0
+offset_right = 1109.0
+offset_bottom = 450.0
+theme_override_fonts/font = ExtResource("9_1uk4m")
+theme_override_font_sizes/font_size = 40
+
+[node name="voices" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_o8y8p")
+volume_db = -8.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y6dms")
+}

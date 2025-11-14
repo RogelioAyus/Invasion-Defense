@@ -1,0 +1,452 @@
+[gd_scene load_steps=26 format=3 uid="uid://xk5k6bcrdg7d"]
+
+[ext_resource type="Script" path="res://scripts/settings.gd" id="1_ojnt6"]
+[ext_resource type="FontFile" uid="uid://dt45xpxux6otb" path="res://Fonts/Bitsential.otf" id="1_xmrdn"]
+[ext_resource type="Texture2D" uid="uid://cuuinssyv0ep5" path="res://sprites/X.png" id="2_ad0c4"]
+[ext_resource type="PackedScene" uid="uid://dyb0ojqqjtjqw" path="res://TSCN Scenes/player.tscn" id="2_x0826"]
+[ext_resource type="FontFile" uid="uid://cei4gt6f8w0ee" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="5_foi6x"]
+
+[sub_resource type="Gradient" id="Gradient_p6qfy"]
+colors = PackedColorArray(0, 0, 0, 0.862745, 0, 0, 0, 0.862745)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_brl66"]
+gradient = SubResource("Gradient_p6qfy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_suxqh"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ssicd"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4fyu1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_74jvr"]
+
+[sub_resource type="Gradient" id="Gradient_vw1nx"]
+offsets = PackedFloat32Array(0.340659, 0.373626, 0.450549, 0.725275)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_44qd6"]
+gradient = SubResource("Gradient_vw1nx")
+fill = 2
+fill_from = Vector2(0.5, 0.478632)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_7w54c"]
+color = Color(0.282353, 0.282353, 0.282353, 1)
+grow_begin = -20.0
+grow_end = -20.0
+thickness = 12
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_oj5fg"]
+color = Color(1, 1, 1, 1)
+grow_begin = -20.0
+grow_end = -10.0
+thickness = 12
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_kj161"]
+color = Color(0.411765, 0, 0, 1)
+grow_begin = -20.0
+grow_end = -20.0
+thickness = 12
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ljo61"]
+color = Color(0.392157, 0, 0, 1)
+grow_begin = -20.0
+grow_end = -20.0
+thickness = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qqstd"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8hyvk"]
+bg_color = Color(0.258824, 0.258824, 0.258824, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="Gradient" id="Gradient_xpf8b"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rnfus"]
+gradient = SubResource("Gradient_xpf8b")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvoa8"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k64mi"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yvnmr"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+expand_margin_left = 7.0
+expand_margin_top = 7.0
+expand_margin_right = 7.0
+expand_margin_bottom = 7.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hyw6b"]
+bg_color = Color(0.266667, 0.266667, 0.266667, 1)
+
+[node name="CL-Settings" type="CanvasLayer"]
+process_mode = 3
+layer = 17
+script = ExtResource("1_ojnt6")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+process_mode = 3
+offset_right = 1923.0
+offset_bottom = 1080.0
+texture = SubResource("GradientTexture2D_brl66")
+
+[node name="Control" type="Control" parent="."]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="exit" type="Button" parent="Control"]
+process_mode = 3
+layout_mode = 2
+offset_left = 21.0
+offset_top = 39.0
+offset_right = 221.0
+offset_bottom = 239.0
+scale = Vector2(0.2, 0.2)
+theme_override_styles/normal = SubResource("StyleBoxTexture_suxqh")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ssicd")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_4fyu1")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_74jvr")
+icon = ExtResource("2_ad0c4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+process_mode = 3
+layout_mode = 0
+offset_left = 29.0
+offset_top = 139.0
+offset_right = 539.0
+offset_bottom = 914.0
+
+[node name="Label" type="Label" parent="Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xmrdn")
+theme_override_font_sizes/font_size = 26
+text = "Music Volume"
+
+[node name="music" type="HSlider" parent="Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_icons/grabber = SubResource("GradientTexture2D_44qd6")
+theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_44qd6")
+theme_override_icons/grabber_disabled = SubResource("GradientTexture2D_44qd6")
+theme_override_styles/slider = SubResource("StyleBoxLine_7w54c")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_oj5fg")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_kj161")
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="Label2" type="Label" parent="Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xmrdn")
+theme_override_font_sizes/font_size = 26
+text = "Sound
+"
+
+[node name="sound" type="HSlider" parent="Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_icons/grabber = SubResource("GradientTexture2D_44qd6")
+theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_44qd6")
+theme_override_icons/grabber_disabled = SubResource("GradientTexture2D_44qd6")
+theme_override_styles/slider = SubResource("StyleBoxLine_7w54c")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_oj5fg")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_ljo61")
+max_value = 1.0
+step = 0.001
+value = 0.5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+alignment = 1
+
+[node name="Guide" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+process_mode = 3
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xmrdn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_qqstd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8hyvk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qqstd")
+text = "Guides
+"
+
+[node name="lore" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xmrdn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_qqstd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8hyvk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qqstd")
+text = "The Lore"
+
+[node name="about" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xmrdn")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_qqstd")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8hyvk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_qqstd")
+text = "About
+"
+
+[node name="Guide" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="Split" type="VSplitContainer" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+split_offset = -15
+
+[node name="Adjust" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="WIndows" type="Label" parent="Control/VBoxContainer/Adjust"]
+custom_minimum_size = Vector2(285.24, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xmrdn")
+theme_override_font_sizes/font_size = 36
+text = "Window settings: "
+
+[node name="Options" type="OptionButton" parent="Control/VBoxContainer/Adjust"]
+custom_minimum_size = Vector2(265, 0)
+layout_mode = 2
+
+[node name="Split2" type="VSplitContainer" parent="Control/VBoxContainer"]
+custom_minimum_size = Vector2(0, 5)
+layout_mode = 2
+split_offset = 60
+
+[node name="Adjust2" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="Size" type="Label" parent="Control/VBoxContainer/Adjust2"]
+custom_minimum_size = Vector2(285.35, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xmrdn")
+theme_override_font_sizes/font_size = 36
+text = "WIndow Size:"
+
+[node name="Options" type="OptionButton" parent="Control/VBoxContainer/Adjust2"]
+custom_minimum_size = Vector2(265, 0)
+layout_mode = 2
+
+[node name="Adjust3" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="Size" type="Label" parent="Control/VBoxContainer/Adjust3"]
+custom_minimum_size = Vector2(285.35, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xmrdn")
+theme_override_font_sizes/font_size = 36
+text = "Low Detail Mode:"
+
+[node name="CheckBox" type="CheckBox" parent="Control/VBoxContainer/Adjust3"]
+layout_mode = 2
+size_flags_stretch_ratio = 1.82
+theme_override_font_sizes/font_size = 1
+expand_icon = true
+
+[node name="Debug" type="HBoxContainer" parent="Control/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Size" type="Label" parent="Control/VBoxContainer/Debug"]
+custom_minimum_size = Vector2(285.35, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_xmrdn")
+theme_override_font_sizes/font_size = 36
+text = "Debug (Add 99999 scrap)"
+
+[node name="CheckBox" type="CheckBox" parent="Control/VBoxContainer/Debug"]
+layout_mode = 2
+size_flags_stretch_ratio = 1.82
+theme_override_font_sizes/font_size = 1
+expand_icon = true
+
+[node name="About" type="TextureRect" parent="."]
+visible = false
+offset_right = 1928.0
+offset_bottom = 1082.0
+texture = SubResource("GradientTexture2D_rnfus")
+
+[node name="text" type="RichTextLabel" parent="About"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 130.0
+offset_right = 1772.0
+offset_bottom = 988.0
+theme_override_colors/default_color = Color(0.54902, 0.54902, 0.592157, 1)
+theme_override_fonts/normal_font = ExtResource("5_foi6x")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_gvoa8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k64mi")
+text = "The Story:
+
+In the Galaxy of Milky way, Civilizations and Interstellar Civilization was in the peaceful unity with the other entities throughout the quardrant, each with its unique ecosystems and complexity of life. Among them, a mysterious and dangerous sector called Null was spreading its destructive genetical modified biomechanic organisms to nearby sectors. These organisms were not only lethal but also had the ability to assimilate and adapt, making them an unstoppable force.
+
+In one of the neighboring sectors, a spirit known as Spirit Cursor, the Guardian of advance peace and Unity, had long slumbered in harmony with the natural balance of the sector. Sensing the impending threat from Null, the cursor awoke with a purpose, to defend its home and the lives it harbored.
+
+As The Cursor emerged, a mothership from another sector, known for its advanced technology, lost its navigation system during a routine delivery. Fate led the mothership into the heart of Null. Unaware of the impending danger, the mothership drifted into the heart of the genetic invasion.
+
+The Spirit Cursor sensed the distress of the mothership and recognized an opportunity. Drawing strength from the vessel, The Spirit Cursor fused its ethereal essence with the advanced technology of the ship. The once dormant spirit now found itself in a formidable mechanical form, a synthesis of ancient spirituality and cutting-edge technology.
+
+Empowered by this union, The Spirit Cursor took control of the mothership, gaining access to its weapons, shields, and propulsion systems. The once silent vessel now roared to life with newfound energy. The symbiotic relationship between The Spirit Cursor and the mothership enhanced the ship's capabilities beyond imagination.
+
+With the spirit now at the helm, the mothership became a beacon of hope for the besieged sectors. The Spirit Cursor, driven by a deep sense of duty, set out on a mission to locate the source of the genetic virus in Null and eradicate it before it could spread further.
+
+As the mothership traversed the dangerous territories of Null, it encountered waves of biomechanic monstrosities. The Spirit Cursor, fueled by the life force of the sectors it aimed to protect, unleashed devastating attacks on the invaders. The once-unstoppable genetic virus found a formidable adversary in the form of the spirit-infused mothership.
+
+The battle between The Spirit Cursor and the forces of Null raged on, with the fate of multiple sectors hanging in the balance. The spirit, now a guardian of not just one sector but many, fought with courage and determination to purge the galaxy of the destructive force that sought to corrupt and consume all in its path. The mothership, once lost, became a symbol of resistance and hope against the encroaching darkness of Null."
+
+[node name="exitAbout" type="Button" parent="About"]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 220.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_yvnmr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yvnmr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hyw6b")
+icon = ExtResource("2_ad0c4")
+
+[node name="aboutDetails" type="TextureRect" parent="."]
+visible = false
+offset_right = 1928.0
+offset_bottom = 1082.0
+texture = SubResource("GradientTexture2D_rnfus")
+
+[node name="text" type="RichTextLabel" parent="aboutDetails"]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 130.0
+offset_right = 1772.0
+offset_bottom = 988.0
+theme_override_colors/default_color = Color(0.54902, 0.54902, 0.592157, 1)
+theme_override_fonts/normal_font = ExtResource("5_foi6x")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_gvoa8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k64mi")
+text = "This Game was inspired by an old 2007 game called \"Immortal defense\". 
+
+This is a first prototype Game and it was a ideal concept to understand the simple logic of a basic shooting game, This game was based of an another idea in another engine called \"Pythonista\" runs in python in IOS. it has the fundamental function of this game like shooting cursor and enemies, then added few extra features like wave and unqiue shop design
+
+This game is created by Rogelio Publico and Dean Salarda. It takes 2 weeks of work to make this game together. The Music are not made originally by Rogelio D. Publico II.
+It was made by Paul Eres: https://www.youtube.com/@rinkuhero or @rinkuhero
+
+Some sound effects are made generated by sfxr applications:  https://sfxr.me
+
+This game cannot be publish anywhere due to copyright infridgement. If possible, we can replace the OST music to a different new or remix versions of it. Right now there is no news about it.
+
+Possible it can be post on steam, but it wont happen anytime soon.
+
+
+
+This game is made for testing the ability of what is possible to make a game, by doing inspiration to other games and make a prototype. It is mostly ideal to start recreating a game from an old games in 2007, just dont publish it with copyright materials."
+
+[node name="exitAbout" type="Button" parent="aboutDetails"]
+process_mode = 3
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 220.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_yvnmr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yvnmr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hyw6b")
+icon = ExtResource("2_ad0c4")
+
+[node name="guides" type="TextureRect" parent="."]
+visible = false
+offset_right = 1928.0
+offset_bottom = 1082.0
+texture = SubResource("GradientTexture2D_rnfus")
+
+[node name="text" type="RichTextLabel" parent="guides"]
+layout_mode = 0
+offset_left = 213.0
+offset_top = 130.0
+offset_right = 1769.0
+offset_bottom = 988.0
+theme_override_colors/default_color = Color(0.776471, 0.776471, 0.807843, 1)
+theme_override_fonts/normal_font = ExtResource("5_foi6x")
+theme_override_font_sizes/normal_font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_gvoa8")
+theme_override_styles/normal = SubResource("StyleBoxFlat_k64mi")
+text = "Button Guides:
+W,A,S,D - Movement
+Shift - To Dash / Skip Dialogue
+1,2,3 - to change weapons
+E - To open shop / Close the shop
+
+Other Guide:
+Your ship have some movement penalty when trying to steer to a specific direction, its better to use dash to avoid enemy bullets and laser slowly.
+
+Here are the enemies info:
+
+-Red enemy: A speedy type that can catch up to you, kill them first to avoid getting hurt
+
+-Blue enemy: An enemy that shoot, it is slow but ti can be annoying
+
+- Gold Enemy: Shoot a bit faster
+
+- White enemy: Shoots lasers. Easily avoidable
+
+- White enemy with a shield: Immune to any attack and shoot laser, attack it from the inside."
+
+[node name="exitGuide" type="Button" parent="guides"]
+process_mode = 3
+layout_mode = 0
+offset_right = 220.0
+offset_bottom = 220.0
+scale = Vector2(0.3, 0.3)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_yvnmr")
+theme_override_styles/hover = SubResource("StyleBoxFlat_yvnmr")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_hyw6b")
+icon = ExtResource("2_ad0c4")
+
+[node name="Player" parent="." instance=ExtResource("2_x0826")]
+isGameOn = false
+
+[connection signal="pressed" from="Control/exit" to="." method="_on_exitSettings"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/Guide" to="." method="guideOpen"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/lore" to="." method="_on_about_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/about" to="." method="_on_credits_pressed"]
+[connection signal="toggled" from="Control/VBoxContainer/Adjust3/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="toggled" from="Control/VBoxContainer/Debug/CheckBox" to="." method="_on_check_debug"]
+[connection signal="pressed" from="About/exitAbout" to="." method="_on_exit_about_pressed"]
+[connection signal="pressed" from="aboutDetails/exitAbout" to="." method="exitDetailsAbout"]
+[connection signal="pressed" from="guides/exitGuide" to="." method="guideClose"]

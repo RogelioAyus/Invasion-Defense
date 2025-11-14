@@ -1,0 +1,269 @@
+[gd_scene load_steps=27 format=3 uid="uid://bdvp2ic2mdedq"]
+
+[ext_resource type="Texture2D" uid="uid://dj6p6wg6tak1f" path="res://sprites/boss/ce1.png" id="1_fjhls"]
+[ext_resource type="Script" path="res://scripts/crypto_embryo.gd" id="1_wis2b"]
+[ext_resource type="PackedScene" uid="uid://bo6g25tp74b8o" path="res://TSCN Scenes/gainer.tscn" id="2_38ukv"]
+[ext_resource type="PackedScene" uid="uid://dtcrfwhy4hn7v" path="res://TSCN Scenes/boss_death.tscn" id="2_ad4n7"]
+[ext_resource type="PackedScene" uid="uid://dckjwppafec7x" path="res://TSCN Scenes/enemy_bullet.tscn" id="2_c4ycj"]
+[ext_resource type="Texture2D" uid="uid://cxtklq1m2cpyw" path="res://sprites/boss/ce2.png" id="2_q0gn8"]
+[ext_resource type="Texture2D" uid="uid://i38y1bwfa0kx" path="res://sprites/boss/ce3.png" id="3_3peoe"]
+[ext_resource type="Texture2D" uid="uid://sahylbph4b23" path="res://sprites/boss/ce4.png" id="4_nqla2"]
+[ext_resource type="Texture2D" uid="uid://b7px2ce6ypox5" path="res://sprites/boss/ce5.png" id="5_tp7xx"]
+[ext_resource type="Texture2D" uid="uid://pyfya23mrm66" path="res://sprites/Bubble1.png" id="7_jqnkh"]
+[ext_resource type="AudioStream" uid="uid://bajc68ri36l37" path="res://Music/sfx/embryobrokeGlass.wav" id="10_c5go6"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_16nhi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fjhls")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_q0gn8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3peoe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_nqla2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_tp7xx")
+}],
+"loop": true,
+"name": &"cryptoEmbryo",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o3qp6"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6hpom"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x0y0t"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yydvf"]
+blend_mode = 1
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ydwwl"]
+radius = 70.0286
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tttii"]
+radius = 137.091
+
+[sub_resource type="Animation" id="Animation_x571f"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite/outer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite/outer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.902222, 0.902222)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sprite/inner:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sprite/inner:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.6, 0.6)]
+}
+
+[sub_resource type="Animation" id="Animation_w8n0q"]
+resource_name = "shieldDown"
+length = 0.5
+step = 0.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite/outer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.490636),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite/outer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0.902222, 0.902222), Vector2(10, 10)]
+}
+
+[sub_resource type="Animation" id="Animation_begnw"]
+resource_name = "shieldUp"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sprite/outer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sprite/outer:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(0.902222, 0.902222)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dfa6w"]
+_data = {
+"RESET": SubResource("Animation_x571f"),
+"shieldDown": SubResource("Animation_w8n0q"),
+"shieldUp": SubResource("Animation_begnw")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3okdv"]
+bg_color = Color(0.137255, 0.137255, 0.137255, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ovcoj"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4iwos"]
+bg_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_850rp"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="CryptoEmbryo" type="Node2D"]
+script = ExtResource("1_wis2b")
+gainer = ExtResource("2_38ukv")
+bulletE = ExtResource("2_c4ycj")
+DeathParticle = ExtResource("2_ad4n7")
+
+[node name="sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_16nhi")
+animation = &"cryptoEmbryo"
+autoplay = "cryptoEmbryo"
+frame_progress = 0.940888
+
+[node name="inner" type="Sprite2D" parent="sprite"]
+material = SubResource("CanvasItemMaterial_o3qp6")
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("7_jqnkh")
+
+[node name="outer" type="Sprite2D" parent="sprite"]
+self_modulate = Color(1, 1, 1, 0)
+rotation = 1.5708
+scale = Vector2(0.902222, 0.902222)
+texture = ExtResource("7_jqnkh")
+
+[node name="red" type="Sprite2D" parent="sprite/outer"]
+self_modulate = Color(1, 0, 0, 1)
+material = SubResource("CanvasItemMaterial_6hpom")
+texture = ExtResource("7_jqnkh")
+
+[node name="green" type="Sprite2D" parent="sprite/outer"]
+self_modulate = Color(0, 1, 0, 1)
+material = SubResource("CanvasItemMaterial_x0y0t")
+texture = ExtResource("7_jqnkh")
+
+[node name="blue" type="Sprite2D" parent="sprite/outer"]
+self_modulate = Color(0, 0, 1, 1)
+material = SubResource("CanvasItemMaterial_yydvf")
+texture = ExtResource("7_jqnkh")
+
+[node name="embryo" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="embryo"]
+shape = SubResource("CircleShape2D_ydwwl")
+
+[node name="shield" type="Area2D" parent="."]
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shield"]
+shape = SubResource("CircleShape2D_tttii")
+
+[node name="anime" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dfa6w")
+}
+
+[node name="health" type="ProgressBar" parent="."]
+offset_left = -174.0
+offset_top = 141.0
+offset_right = 174.0
+offset_bottom = 158.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3okdv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ovcoj")
+show_percentage = false
+
+[node name="shieldBar" type="ProgressBar" parent="."]
+offset_left = -174.0
+offset_top = 159.0
+offset_right = 174.0
+offset_bottom = 166.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3okdv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_4iwos")
+show_percentage = false
+
+[node name="regen" type="ProgressBar" parent="."]
+offset_left = -174.0
+offset_top = 167.0
+offset_right = 174.0
+offset_bottom = 174.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3okdv")
+theme_override_styles/fill = SubResource("StyleBoxFlat_850rp")
+show_percentage = false
+
+[node name="shielddown" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_c5go6")
+volume_db = -10.0
+bus = &"Sound"
+
+[connection signal="area_entered" from="shield" to="." method="_on_shield_area_entered"]

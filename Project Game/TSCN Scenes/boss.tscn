@@ -1,0 +1,414 @@
+[gd_scene load_steps=44 format=3 uid="uid://c6fbevnf5h8y4"]
+
+[ext_resource type="Texture2D" uid="uid://buotl8cpxlhh" path="res://sprites/boss/boss1.png" id="1_eb0gu"]
+[ext_resource type="Script" path="res://scripts/boss.gd" id="1_ll7rn"]
+[ext_resource type="PackedScene" uid="uid://dtcrfwhy4hn7v" path="res://TSCN Scenes/boss_death.tscn" id="2_4keq1"]
+[ext_resource type="Texture2D" uid="uid://dj6p6wg6tak1f" path="res://sprites/boss/ce1.png" id="2_6s12d"]
+[ext_resource type="PackedScene" uid="uid://bo6g25tp74b8o" path="res://TSCN Scenes/gainer.tscn" id="2_cauhi"]
+[ext_resource type="Texture2D" uid="uid://bkbrihysifv1h" path="res://sprites/boss/boss2.png" id="2_wkwjt"]
+[ext_resource type="Shader" path="res://customs/Blobbing_animation(Shader).gdshader" id="3_2ej6h"]
+[ext_resource type="Texture2D" uid="uid://b5jx0aa3ov8if" path="res://sprites/boss/boss3.png" id="3_i2a4h"]
+[ext_resource type="Texture2D" uid="uid://cxtklq1m2cpyw" path="res://sprites/boss/ce2.png" id="3_p70bb"]
+[ext_resource type="Texture2D" uid="uid://i38y1bwfa0kx" path="res://sprites/boss/ce3.png" id="4_1egi2"]
+[ext_resource type="Texture2D" uid="uid://sahylbph4b23" path="res://sprites/boss/ce4.png" id="5_04tpq"]
+[ext_resource type="Texture2D" uid="uid://b7px2ce6ypox5" path="res://sprites/boss/ce5.png" id="6_ldrx8"]
+[ext_resource type="Texture2D" uid="uid://xpmxqwf77lqk" path="res://sprites/boss/gs1.png" id="10_87ue4"]
+[ext_resource type="Texture2D" uid="uid://y3bseskhff5" path="res://sprites/boss/gs2.png" id="11_ktip7"]
+[ext_resource type="Texture2D" uid="uid://b3chyhp4m4ssm" path="res://sprites/boss/gs3.png" id="12_f7vhr"]
+[ext_resource type="Texture2D" uid="uid://ca3t7p7cd8thh" path="res://sprites/boss/gs4.png" id="13_k6ybm"]
+[ext_resource type="AudioStream" uid="uid://c6d83da3cd768" path="res://Music/sfx/dash_galactic_vessel.wav" id="16_8s35j"]
+[ext_resource type="AudioStream" uid="uid://dhkpy1nwk8s8u" path="res://Music/sfx/warnSignAhead.wav" id="17_u0cdi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hvrrt"]
+size = Vector2(166, 214)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kx357"]
+shader = ExtResource("3_2ej6h")
+shader_parameter/speedC = 100.0
+shader_parameter/strength = 5.0
+shader_parameter/differenciate = 0.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_judpg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6s12d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p70bb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1egi2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_04tpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ldrx8")
+}],
+"loop": true,
+"name": &"cryptEmbryo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_eb0gu")
+}, {
+"duration": 1.1,
+"texture": ExtResource("2_wkwjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i2a4h")
+}],
+"loop": true,
+"name": &"galacticVessel",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_87ue4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ktip7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_f7vhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_k6ybm")
+}],
+"loop": true,
+"name": &"graveShip",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_tmqq3"]
+blend_mode = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uql8d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6s12d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p70bb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1egi2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_04tpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ldrx8")
+}],
+"loop": true,
+"name": &"cryptEmbryo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_eb0gu")
+}, {
+"duration": 1.3,
+"texture": ExtResource("2_wkwjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i2a4h")
+}],
+"loop": true,
+"name": &"galacticVessel",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_87ue4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ktip7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_f7vhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_k6ybm")
+}],
+"loop": true,
+"name": &"graveShip",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gkp1l"]
+blend_mode = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kf6mu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6s12d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p70bb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1egi2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_04tpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ldrx8")
+}],
+"loop": true,
+"name": &"cryptEmbryo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_eb0gu")
+}, {
+"duration": 1.5,
+"texture": ExtResource("2_wkwjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i2a4h")
+}],
+"loop": true,
+"name": &"galacticVessel",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_87ue4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ktip7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_f7vhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_k6ybm")
+}],
+"loop": true,
+"name": &"graveShip",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_uvu3y"]
+blend_mode = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v08sf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6s12d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_p70bb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1egi2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_04tpq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ldrx8")
+}],
+"loop": true,
+"name": &"cryptEmbryo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_eb0gu")
+}, {
+"duration": 0.8,
+"texture": ExtResource("2_wkwjt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_i2a4h")
+}],
+"loop": true,
+"name": &"galacticVessel",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_87ue4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ktip7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_f7vhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_k6ybm")
+}],
+"loop": true,
+"name": &"graveShip",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b3ohd"]
+bg_color = Color(0.196078, 0, 0.454902, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q5a6e"]
+bg_color = Color(0, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wjqn1"]
+bg_color = Color(0.196078, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bbidc"]
+bg_color = Color(1, 0, 0, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g1lrr"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_38544"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bts7i"]
+curve = SubResource("Curve_38544")
+
+[sub_resource type="Gradient" id="Gradient_rbcbt"]
+colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_h00yu"]
+gradient = SubResource("Gradient_rbcbt")
+
+[sub_resource type="Curve" id="Curve_jcmuu"]
+min_value = -800.0
+max_value = 800.0
+_data = [Vector2(0.24127, -2.02271), 0.0, 0.0, 0, 0, Vector2(0.32381, 11.1252), 0.0, 0.0, 0, 0, Vector2(0.498413, 339.823), 4448.38, 4448.38, 0, 0, Vector2(0.552381, 800), 15813.4, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_cjyb3"]
+curve = SubResource("Curve_jcmuu")
+
+[sub_resource type="Curve" id="Curve_sbkgu"]
+max_value = 3.0
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.55873, 2.87674), 0.0, 0.0, 0, 0, Vector2(1, 0.079646), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ypr6e"]
+curve = SubResource("Curve_sbkgu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_d0wy0"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 500.0
+emission_ring_inner_radius = 500.0
+angle_min = -720.0
+angle_max = 720.0
+angle_curve = SubResource("CurveTexture_bts7i")
+orbit_velocity_max = 1.0
+radial_velocity_min = -500.0
+radial_velocity_curve = SubResource("CurveTexture_cjyb3")
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_ypr6e")
+color_ramp = SubResource("GradientTexture1D_h00yu")
+
+[sub_resource type="Gradient" id="Gradient_t07my"]
+offsets = PackedFloat32Array(0, 0.438871)
+colors = PackedColorArray(0.842105, 0.842105, 0.842105, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ma3t7"]
+gradient = SubResource("Gradient_t07my")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+
+[node name="GalacticVessel" type="Node2D"]
+script = ExtResource("1_ll7rn")
+gainer = ExtResource("2_cauhi")
+DeathParticle = ExtResource("2_4keq1")
+
+[node name="enemy_area" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_area"]
+shape = SubResource("RectangleShape2D_hvrrt")
+
+[node name="Asprite" type="AnimatedSprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_kx357")
+sprite_frames = SubResource("SpriteFrames_judpg")
+animation = &"galacticVessel"
+autoplay = "galacticVessel"
+frame_progress = 0.637868
+
+[node name="red" type="AnimatedSprite2D" parent="Asprite"]
+self_modulate = Color(1, 0, 0, 1)
+z_index = -1
+z_as_relative = false
+material = SubResource("CanvasItemMaterial_tmqq3")
+sprite_frames = SubResource("SpriteFrames_uql8d")
+animation = &"galacticVessel"
+autoplay = "galacticVessel"
+
+[node name="blue" type="AnimatedSprite2D" parent="Asprite"]
+self_modulate = Color(0.266667, 0.486275, 1, 1)
+material = SubResource("CanvasItemMaterial_gkp1l")
+sprite_frames = SubResource("SpriteFrames_kf6mu")
+animation = &"galacticVessel"
+autoplay = "galacticVessel"
+
+[node name="green" type="AnimatedSprite2D" parent="Asprite"]
+self_modulate = Color(0.223529, 1, 0.2, 1)
+material = SubResource("CanvasItemMaterial_uvu3y")
+sprite_frames = SubResource("SpriteFrames_v08sf")
+animation = &"galacticVessel"
+autoplay = "galacticVessel"
+
+[node name="Dash" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_8s35j")
+pitch_scale = 0.62
+bus = &"Sound"
+
+[node name="Warn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_u0cdi")
+pitch_scale = 0.62
+bus = &"Sound"
+
+[node name="dash" type="ProgressBar" parent="."]
+offset_left = -55.0
+offset_top = 144.0
+offset_right = 56.0
+offset_bottom = 149.0
+theme_override_styles/background = SubResource("StyleBoxFlat_b3ohd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q5a6e")
+max_value = 8.0
+step = 0.1
+value = 1.0
+show_percentage = false
+
+[node name="health" type="ProgressBar" parent="."]
+offset_left = -55.0
+offset_top = 136.0
+offset_right = 56.0
+offset_bottom = 141.0
+theme_override_styles/background = SubResource("StyleBoxFlat_wjqn1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bbidc")
+max_value = 8.0
+step = 0.1
+value = 1.0
+show_percentage = false
+
+[node name="charging" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_g1lrr")
+emitting = false
+amount = 300
+process_material = SubResource("ParticleProcessMaterial_d0wy0")
+texture = SubResource("GradientTexture2D_ma3t7")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
+[connection signal="area_entered" from="enemy_area" to="." method="_on_boss_area_area_entered"]

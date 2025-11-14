@@ -1,0 +1,729 @@
+[gd_scene load_steps=59 format=3 uid="uid://drxmr8so7nunq"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_8au1k"]
+[ext_resource type="PackedScene" uid="uid://ddq6i782mtc7k" path="res://TSCN Scenes/main_menu.tscn" id="1_ltox6"]
+[ext_resource type="PackedScene" uid="uid://dyb0ojqqjtjqw" path="res://TSCN Scenes/player.tscn" id="2_j0bbi"]
+[ext_resource type="Texture2D" uid="uid://0srvkhnuickn" path="res://sprites/Wallpaper.png" id="4_dnpto"]
+[ext_resource type="Material" uid="uid://cfivf1diefp6x" path="res://customs/add_color_material.tres" id="5_atba4"]
+[ext_resource type="AudioStream" uid="uid://c4ux068nrbslx" path="res://Music/beginning_music.ogg" id="5_jyp47"]
+[ext_resource type="Texture2D" uid="uid://cdoycb77xabrs" path="res://sprites/buksu-logo-min.png" id="6_h1cvq"]
+[ext_resource type="FontFile" uid="uid://cei4gt6f8w0ee" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="8_g7tr6"]
+[ext_resource type="FontFile" uid="uid://dt45xpxux6otb" path="res://Fonts/Bitsential.otf" id="9_li3g7"]
+[ext_resource type="Texture2D" uid="uid://cuuinssyv0ep5" path="res://sprites/X.png" id="10_t73ds"]
+[ext_resource type="Texture2D" uid="uid://btm0gcfe8bfl4" path="res://sprites/Boarder.png" id="11_bsamn"]
+[ext_resource type="StyleBox" uid="uid://cm4nhya43yhnj" path="res://customs/diff_tres.tres" id="11_chxdw"]
+[ext_resource type="AudioStream" uid="uid://drfoefiajyrjc" path="res://Music/sfx/error.wav" id="12_2qths"]
+[ext_resource type="Texture2D" uid="uid://bog4khd56anmc" path="res://sprites/icons/Sterile.png" id="12_ycivs"]
+[ext_resource type="AudioStream" uid="uid://bf0elxcppvpsr" path="res://Music/sfx/diffChange.wav" id="14_gm1ft"]
+
+[sub_resource type="SystemFont" id="SystemFont_pisgp"]
+font_weight = 425
+
+[sub_resource type="FontVariation" id="FontVariation_xli60"]
+base_font = SubResource("SystemFont_pisgp")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_3j0nc"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_x8wb8"]
+
+[sub_resource type="Gradient" id="Gradient_ruoww"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0dfag"]
+gradient = SubResource("Gradient_ruoww")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_jrgx8"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.732719, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6akm6"]
+curve = SubResource("Curve_jrgx8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_h2cmk"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+linear_accel_max = 200.0
+radial_accel_min = 1.0
+radial_accel_max = 9999.0
+scale_min = 0.01
+scale_max = 0.6
+scale_curve = SubResource("CurveTexture_6akm6")
+color_ramp = SubResource("GradientTexture1D_0dfag")
+
+[sub_resource type="Gradient" id="Gradient_d6l75"]
+offsets = PackedFloat32Array(0, 0.0533981, 0.135922, 0.592233, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.5809, 0.678799, 1, 1, 0, 0, 1, 0.301961, 0, 0, 1, 0, 0, 0, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fqfh0"]
+gradient = SubResource("Gradient_d6l75")
+fill = 1
+fill_from = Vector2(0.512821, 0.5)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_87ulh"]
+
+[sub_resource type="Gradient" id="Gradient_j3yso"]
+offsets = PackedFloat32Array(0, 0.424731, 0.494624, 0.763441, 1)
+colors = PackedColorArray(1, 1, 1, 0.0376344, 1, 0.164706, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_834rc"]
+gradient = SubResource("Gradient_j3yso")
+
+[sub_resource type="Curve" id="Curve_8cmny"]
+max_value = 1024.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.235023, 0), 0.0, 0.0, 0, 0, Vector2(1, 1024), 4040.15, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_tsmrp"]
+curve = SubResource("Curve_8cmny")
+
+[sub_resource type="Curve" id="Curve_10n0e"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.741935, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qp2tt"]
+curve = SubResource("Curve_10n0e")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qq1kk"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 1000.0
+emission_ring_inner_radius = 300.0
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+radial_accel_max = 500.0
+radial_accel_curve = SubResource("CurveTexture_tsmrp")
+scale_min = 0.5
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_qp2tt")
+color_ramp = SubResource("GradientTexture1D_834rc")
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mwx83"]
+gradient = SubResource("Gradient_d6l75")
+fill = 1
+fill_from = Vector2(0.512821, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_a6eef"]
+offsets = PackedFloat32Array(0, 0.290323, 0.344086, 0.397849)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vu462"]
+gradient = SubResource("Gradient_a6eef")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ypkyc"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 2.0
+color_ramp = SubResource("GradientTexture1D_vu462")
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_4anhu"]
+gradient = SubResource("Gradient_d6l75")
+width = 400
+height = 400
+fill = 1
+fill_from = Vector2(0.512821, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wx2ub"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xqdft"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ww7pg"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6wd0w"]
+bg_color = Color(1, 0.662745, 0.607843, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2mhn3"]
+
+[sub_resource type="Gradient" id="Gradient_3jnrq"]
+offsets = PackedFloat32Array(0.00549451, 0.406593, 0.516484)
+colors = PackedColorArray(1, 1, 1, 0.930693, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0ypg2"]
+gradient = SubResource("Gradient_3jnrq")
+fill = 1
+fill_from = Vector2(0.508547, 0.487179)
+
+[sub_resource type="Gradient" id="Gradient_id2sc"]
+offsets = PackedFloat32Array(0.00549451, 0.412088, 0.516484)
+colors = PackedColorArray(1, 1, 1, 0.930693, 1, 0.571068, 0.508893, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_k5314"]
+gradient = SubResource("Gradient_id2sc")
+fill = 1
+fill_from = Vector2(0.508547, 0.487179)
+
+[sub_resource type="Gradient" id="Gradient_jtqg1"]
+offsets = PackedFloat32Array(0.00549451, 0.406593, 0.516484)
+colors = PackedColorArray(0.321728, 0.321728, 0.321728, 0.930693, 0.212305, 0.212305, 0.212305, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ybsx6"]
+gradient = SubResource("Gradient_jtqg1")
+fill = 1
+fill_from = Vector2(0.508547, 0.487179)
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_6ejf1"]
+color = Color(0.364706, 0.364706, 0.364706, 1)
+grow_begin = -15.0
+grow_end = -15.0
+thickness = 11
+
+[sub_resource type="Gradient" id="Gradient_boux7"]
+offsets = PackedFloat32Array(0, 0.989547)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bs1ag"]
+gradient = SubResource("Gradient_boux7")
+
+[sub_resource type="Curve" id="Curve_ev7dq"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.31029, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_arl5t"]
+curve = SubResource("Curve_ev7dq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o4j0o"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 23.0
+emission_ring_inner_radius = 23.0
+direction = Vector3(0, -100, 0)
+spread = 180.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = -100.0
+tangential_accel_max = 100.0
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_arl5t")
+color_ramp = SubResource("GradientTexture1D_bs1ag")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uo2qi"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="Environment" id="Environment_kepmd"]
+background_mode = 3
+background_energy_multiplier = 6.25
+ambient_light_source = 2
+glow_enabled = true
+glow_levels/6 = 1.0
+glow_levels/7 = 1.0
+glow_normalized = true
+glow_intensity = 4.25
+glow_blend_mode = 1
+glow_hdr_threshold = 0.0
+glow_hdr_scale = 0.0
+glow_hdr_luminance_cap = 41.97
+glow_map_strength = 0.0
+adjustment_enabled = true
+
+[node name="Main" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_8au1k")
+metadata/_edit_horizontal_guides_ = []
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("1_ltox6")]
+
+[node name="Version" type="Label" parent="CanvasLayer/MainMenu"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 1041.0
+offset_right = 809.0
+offset_bottom = 1178.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = SubResource("FontVariation_xli60")
+theme_override_font_sizes/font_size = 100
+text = "Beta v0.4.5"
+horizontal_alignment = 1
+
+[node name="Player" parent="CanvasLayer" instance=ExtResource("2_j0bbi")]
+isGameOn = false
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = -744.0
+offset_top = -385.0
+offset_right = 2638.0
+offset_bottom = 1486.0
+texture = SubResource("CanvasTexture_3j0nc")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0, 0.117647, 0.211765, 0.243137)
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_x8wb8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -1.0
+offset_right = 1933.0
+offset_bottom = 1094.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_dnpto")
+
+[node name="light" type="GPUParticles2D" parent="."]
+material = ExtResource("5_atba4")
+position = Vector2(956, 542)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_h2cmk")
+texture = SubResource("GradientTexture2D_fqfh0")
+lifetime = 2.0
+speed_scale = 5.0
+visibility_rect = Rect2(-960, -540, 1920, 1080)
+trail_enabled = true
+trail_sections = 2
+trail_section_subdivisions = 2
+
+[node name="further light" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_87ulh")
+position = Vector2(956, 542)
+amount = 2000
+process_material = SubResource("ParticleProcessMaterial_qq1kk")
+texture = SubResource("GradientTexture2D_mwx83")
+lifetime = 5.0
+preprocess = 4.0
+visibility_rect = Rect2(-960, -540, 1920, 1080)
+trail_sections = 2
+trail_section_subdivisions = 2
+
+[node name="blinking" type="GPUParticles2D" parent="."]
+material = ExtResource("5_atba4")
+position = Vector2(956, 542)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_ypkyc")
+texture = SubResource("GradientTexture2D_4anhu")
+lifetime = 3.0
+preprocess = 7.0
+visibility_rect = Rect2(-960, -540, 1920, 1080)
+trail_lifetime = 1.0
+trail_sections = 2
+trail_section_subdivisions = 2
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_jyp47")
+bus = &"Music"
+
+[node name="Buksu-logo-min" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1860, 1030)
+scale = Vector2(0.0515695, 0.0515695)
+texture = ExtResource("6_h1cvq")
+
+[node name="CL2" type="CanvasLayer" parent="."]
+layer = 2
+visible = false
+
+[node name="Player2" parent="CL2" instance=ExtResource("2_j0bbi")]
+isGameOn = false
+
+[node name="ColorRect" type="ColorRect" parent="CL2"]
+modulate = Color(1, 1, 1, 0.929412)
+offset_left = 1.0
+offset_top = 3.0
+offset_right = 1926.0
+offset_bottom = 1089.0
+color = Color(0, 0, 0, 1)
+
+[node name="Labols" type="Label" parent="CL2"]
+offset_left = 748.0
+offset_top = 394.0
+offset_right = 1180.0
+offset_bottom = 439.0
+theme_override_fonts/font = ExtResource("8_g7tr6")
+theme_override_font_sizes/font_size = 30
+text = "Insert your Spirit Name:"
+horizontal_alignment = 1
+
+[node name="NameIn" type="LineEdit" parent="CL2"]
+offset_left = 758.0
+offset_top = 443.0
+offset_right = 1166.0
+offset_bottom = 514.0
+theme_override_fonts/font = ExtResource("8_g7tr6")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_wx2ub")
+placeholder_text = "Name"
+max_length = 10
+
+[node name="Student ID" type="LineEdit" parent="CL2"]
+offset_left = 1235.0
+offset_top = 535.0
+offset_right = 1643.0
+offset_bottom = 575.0
+theme_override_fonts/font = ExtResource("8_g7tr6")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_wx2ub")
+placeholder_text = "Student ID"
+max_length = 10
+
+[node name="enterID" type="Label" parent="CL2"]
+offset_left = 1240.0
+offset_top = 516.0
+offset_right = 1542.0
+offset_bottom = 533.0
+theme_override_fonts/font = ExtResource("8_g7tr6")
+theme_override_font_sizes/font_size = 15
+text = "Enter your student ID"
+
+[node name="StratGame" type="Button" parent="CL2"]
+offset_left = 760.0
+offset_top = 827.0
+offset_right = 1172.0
+offset_bottom = 890.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_pressed_color = Color(1, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0.631373, 0, 1)
+theme_override_fonts/font = ExtResource("9_li3g7")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_xqdft")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ww7pg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6wd0w")
+theme_override_styles/focus = SubResource("StyleBoxTexture_2mhn3")
+text = "Start"
+flat = true
+icon_alignment = 1
+
+[node name="cancel" type="Button" parent="CL2"]
+offset_left = 661.0
+offset_top = 311.0
+offset_right = 861.0
+offset_bottom = 511.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("9_li3g7")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_xqdft")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ww7pg")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_6wd0w")
+text = "
+"
+icon = ExtResource("10_t73ds")
+flat = true
+icon_alignment = 1
+
+[node name="difficulty" type="HSlider" parent="CL2"]
+offset_left = 779.0
+offset_top = 630.0
+offset_right = 1159.0
+offset_bottom = 694.0
+theme_override_icons/grabber = SubResource("GradientTexture2D_0ypg2")
+theme_override_icons/grabber_highlight = SubResource("GradientTexture2D_k5314")
+theme_override_icons/grabber_disabled = SubResource("GradientTexture2D_ybsx6")
+theme_override_styles/slider = SubResource("StyleBoxLine_6ejf1")
+theme_override_styles/grabber_area = ExtResource("11_chxdw")
+theme_override_styles/grabber_area_highlight = ExtResource("11_chxdw")
+max_value = 3.0
+value = 1.0
+
+[node name="text" type="Label" parent="CL2/difficulty"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -413.0
+offset_top = 63.0
+offset_right = 786.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.462745, 0, 0.0901961, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_g7tr6")
+theme_override_font_sizes/font_size = 20
+text = "??????????"
+horizontal_alignment = 1
+
+[node name="label" type="Label" parent="CL2/difficulty"]
+texture_filter = 1
+layout_mode = 0
+offset_left = -439.0
+offset_top = -20.0
+offset_right = 760.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0.462745, 0, 0.0901961, 1)
+theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_g7tr6")
+theme_override_font_sizes/font_size = 30
+text = "Difficulty:"
+horizontal_alignment = 1
+
+[node name="Symbol" type="Sprite2D" parent="CL2/difficulty"]
+position = Vector2(286, -4)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("12_ycivs")
+
+[node name="error" type="AudioStreamPlayer" parent="CL2"]
+stream = ExtResource("12_2qths")
+bus = &"Sound"
+
+[node name="changeDif" type="AudioStreamPlayer" parent="CL2"]
+stream = ExtResource("14_gm1ft")
+bus = &"Sound"
+
+[node name="CheckButton" type="CheckBox" parent="CL2"]
+visible = false
+offset_left = 753.0
+offset_top = 534.0
+offset_right = 981.0
+offset_bottom = 577.0
+theme_override_fonts/font = ExtResource("9_li3g7")
+theme_override_font_sizes/font_size = 25
+text = "Enter Tournament"
+
+[node name="DiffPart" type="GPUParticles2D" parent="CL2"]
+position = Vector2(1065, 626)
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_o4j0o")
+
+[node name="CL3 - Leaderboard" type="CanvasLayer" parent="."]
+layer = 3
+visible = false
+
+[node name="Player2" parent="CL3 - Leaderboard" instance=ExtResource("2_j0bbi")]
+isGameOn = false
+
+[node name="ColorRect" type="ColorRect" parent="CL3 - Leaderboard"]
+offset_right = 1935.0
+offset_bottom = 1078.0
+color = Color(0, 0, 0, 0.705882)
+
+[node name="Control" type="Control" parent="CL3 - Leaderboard"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CL3 - Leaderboard/Control"]
+self_modulate = Color(0.0392157, 0, 0.431373, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -271.0
+offset_top = -356.0
+offset_right = -85.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.93749, 2.92673)
+texture = ExtResource("11_bsamn")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="title" type="Label" parent="CL3 - Leaderboard/Control"]
+layout_mode = 2
+offset_left = 778.0
+offset_top = 218.0
+offset_right = 1139.0
+offset_bottom = 256.0
+theme_override_fonts/font = ExtResource("9_li3g7")
+theme_override_font_sizes/font_size = 40
+text = "Leaderboard
+"
+horizontal_alignment = 1
+
+[node name="NameScore" type="RichTextLabel" parent="CL3 - Leaderboard/Control"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 741.0
+offset_top = 271.0
+offset_right = 1183.0
+offset_bottom = 871.0
+theme_override_fonts/normal_font = ExtResource("8_g7tr6")
+theme_override_font_sizes/normal_font_size = 25
+text = "sssssssssssssssssssssssssssssssssss"
+
+[node name="name_score" type="Label" parent="CL3 - Leaderboard/Control"]
+layout_mode = 0
+offset_left = 722.0
+offset_top = 248.0
+offset_right = 773.0
+offset_bottom = 274.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Top:"
+
+[node name="Tournament" type="CheckBox" parent="CL3 - Leaderboard/Control"]
+layout_mode = 0
+offset_left = 1249.0
+offset_top = 864.0
+offset_right = 1477.0
+offset_bottom = 895.0
+theme_override_fonts/font = ExtResource("9_li3g7")
+theme_override_font_sizes/font_size = 23
+text = "Tournament Only"
+
+[node name="Top3" type="CheckBox" parent="CL3 - Leaderboard/Control"]
+layout_mode = 0
+offset_left = 1249.0
+offset_top = 840.0
+offset_right = 1477.0
+offset_bottom = 871.0
+theme_override_fonts/font = ExtResource("9_li3g7")
+theme_override_font_sizes/font_size = 23
+text = "The Top 3 ONLY"
+
+[node name="exit" type="Button" parent="CL3 - Leaderboard"]
+offset_left = 33.0
+offset_top = 20.0
+offset_right = 233.0
+offset_bottom = 220.0
+scale = Vector2(0.2, 0.2)
+theme_override_styles/normal = SubResource("StyleBoxFlat_uo2qi")
+icon = ExtResource("10_t73ds")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_kepmd")
+
+[node name="Confirmation (unused)" type="CanvasLayer" parent="."]
+layer = 4
+visible = false
+
+[node name="Control" type="Control" parent="Confirmation (unused)"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Confirmation (unused)/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -266.0
+offset_top = -136.0
+offset_right = 266.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_bsamn")
+patch_margin_left = 20
+patch_margin_top = 20
+patch_margin_right = 20
+patch_margin_bottom = 20
+
+[node name="Label" type="Label" parent="Confirmation (unused)/Control/NinePatchRect"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_li3g7")
+theme_override_font_sizes/font_size = 25
+text = "?????????"
+horizontal_alignment = 1
+
+[node name="confirm" type="Button" parent="Confirmation (unused)/Control/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 136.0
+offset_top = -66.0
+offset_right = 210.0
+offset_bottom = -35.0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("9_li3g7")
+text = "Let's Go"
+
+[node name="exit" type="Button" parent="Confirmation (unused)/Control/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -201.0
+offset_top = -64.0
+offset_right = 557.0
+offset_bottom = 210.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.095, 0.095)
+theme_override_fonts/font = ExtResource("9_li3g7")
+text = "NO"
+icon = ExtResource("10_t73ds")
+icon_alignment = 1
+
+[node name="Player2" parent="Confirmation (unused)" instance=ExtResource("2_j0bbi")]
+isGameOn = false
+
+[node name="CL4 - Credits" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="CL4 - Credits"]
+offset_right = 1935.0
+offset_bottom = 1078.0
+color = Color(0, 0.12549, 0, 0.639216)
+
+[node name="exit" type="Button" parent="CL4 - Credits"]
+offset_left = 33.0
+offset_top = 20.0
+offset_right = 233.0
+offset_bottom = 220.0
+scale = Vector2(0.2, 0.2)
+theme_override_styles/normal = SubResource("StyleBoxFlat_uo2qi")
+icon = ExtResource("10_t73ds")
+
+[node name="Label" type="Label" parent="CL4 - Credits"]
+offset_left = 21.0
+offset_top = 116.0
+offset_right = 1778.0
+offset_bottom = 253.0
+scale = Vector2(0.3, 0.3)
+theme_override_font_sizes/font_size = 100
+text = "Thanks to my group partner that build this project:
+Dean Salarda
+
+
+
+Thanks to my Contributor:
+BeauvoirFerril
+
+
+Playtesters:
+Roneus Maximus
+Krepeu DoesArts"
+
+[connection signal="pressed" from="CL2/StratGame" to="CanvasLayer/MainMenu" method="_on_strat_game_pressed"]
+[connection signal="pressed" from="CL2/cancel" to="." method="_on_cancel_pressed"]
+[connection signal="value_changed" from="CL2/difficulty" to="." method="_on_difficulty_value_changed"]
+[connection signal="toggled" from="CL2/CheckButton" to="." method="_on_check_button_toggled"]
+[connection signal="toggled" from="CL3 - Leaderboard/Control/Tournament" to="CanvasLayer/MainMenu" method="_on_tournament_toggled"]
+[connection signal="toggled" from="CL3 - Leaderboard/Control/Top3" to="CanvasLayer/MainMenu" method="_on_top_3_toggled"]
+[connection signal="pressed" from="CL3 - Leaderboard/exit" to="." method="_onExitLeaderboard"]
+[connection signal="pressed" from="Confirmation (unused)/Control/NinePatchRect/confirm" to="CanvasLayer/MainMenu" method="_on_confirm_pressed"]
+[connection signal="pressed" from="Confirmation (unused)/Control/NinePatchRect/exit" to="CanvasLayer/MainMenu" method="_exitTheConfirmation"]
+[connection signal="pressed" from="CL4 - Credits/exit" to="." method="_on_exit_Credits"]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=10 format=3 uid="uid://dgluje054wogu"]
+
+[ext_resource type="Script" path="res://scripts/missile.gd" id="1_061qw"]
+[ext_resource type="Texture2D" uid="uid://chkbncvn7a73j" path="res://sprites/Homing_missile.png" id="2_0xsgr"]
+[ext_resource type="Script" path="res://scripts/missile_attack.gd" id="2_wwtqv"]
+[ext_resource type="Material" uid="uid://cfivf1diefp6x" path="res://customs/add_color_material.tres" id="3_ip22b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rldwr"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3iaw4"]
+b = Vector2(-5, 0)
+
+[sub_resource type="Gradient" id="Gradient_42axa"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0.866667, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c7kxy"]
+gradient = SubResource("Gradient_42axa")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_uage6"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 7.0
+spread = 0.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_c7kxy")
+
+[node name="missile" type="CharacterBody2D"]
+script = ExtResource("1_061qw")
+
+[node name="missile_attack" type="Area2D" parent="."]
+collision_layer = 513
+script = ExtResource("2_wwtqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="missile_attack"]
+rotation = 1.56864
+shape = SubResource("CapsuleShape2D_rldwr")
+debug_color = Color(1, 0.811765, 0.870588, 0.419608)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("SegmentShape2D_3iaw4")
+disabled = true
+debug_color = Color(1, 1, 1, 0.419608)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.17, 0.17)
+texture = ExtResource("2_0xsgr")
+
+[node name="rocketEmitter" type="GPUParticles2D" parent="."]
+material = ExtResource("3_ip22b")
+position = Vector2(-10, 0)
+amount = 2000
+process_material = SubResource("ParticleProcessMaterial_uage6")
+fixed_fps = 60
+trail_lifetime = 10.0
+
+[connection signal="area_entered" from="missile_attack" to="." method="_on_missile_attack_area_entered"]

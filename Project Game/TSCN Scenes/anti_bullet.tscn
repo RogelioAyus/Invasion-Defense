@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://cwcjdk2kwi2sl"]
+
+[ext_resource type="Script" path="res://scripts/anti_bullet.gd" id="1_gheq8"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_mgaef"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_hnjo1"]
+offsets = PackedFloat32Array(0, 0.205575, 1)
+colors = PackedColorArray(0, 0, 1, 1, 1, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2fx4x"]
+gradient = SubResource("Gradient_hnjo1")
+
+[sub_resource type="Curve" id="Curve_q70pc"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.247619, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -24.5263, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gl0w6"]
+curve = SubResource("Curve_q70pc")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4bvcg"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 100.0
+gravity = Vector3(0, 0, 0)
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_gl0w6")
+color_ramp = SubResource("GradientTexture1D_2fx4x")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_yxud6"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_tsiau"]
+offsets = PackedFloat32Array(0, 0.031348, 0.147335, 0.404389, 0.717868)
+colors = PackedColorArray(0.910891, 0.910891, 0.910891, 1, 1, 1, 1, 1, 0.129518, 0.365411, 0.999941, 1, 0.977713, 0, 0.0667909, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6lscc"]
+gradient = SubResource("Gradient_tsiau")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3sei2"]
+radius = 32.3883
+
+[node name="Anti_Bullet" type="Node2D"]
+script = ExtResource("1_gheq8")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_mgaef")
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_4bvcg")
+
+[node name="x" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_yxud6")
+texture = SubResource("GradientTexture2D_6lscc")
+
+[node name="antiBullet" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="antiBullet"]
+visible = false
+shape = SubResource("CircleShape2D_3sei2")
+
+[node name="debug" type="Label" parent="."]
+visible = false
+offset_left = 30.0
+offset_top = 24.0
+offset_right = 70.0
+offset_bottom = 47.0
+text = "???"
+
+[connection signal="area_entered" from="antiBullet" to="." method="_on_anti_bullet_area_entered"]

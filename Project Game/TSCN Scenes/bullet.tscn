@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://b1bwrvo6b3jii"]
+
+[ext_resource type="Script" path="res://scripts/bullet.gd" id="1_rdvah"]
+[ext_resource type="Script" path="res://scripts/bullet_area.gd" id="2_4uhj5"]
+[ext_resource type="Material" uid="uid://cfivf1diefp6x" path="res://customs/add_color_material.tres" id="2_tdgum"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h07yq"]
+size = Vector2(10, 10)
+
+[sub_resource type="Gradient" id="Gradient_qmtkj"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_41qm3"]
+gradient = SubResource("Gradient_qmtkj")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0mcv5"]
+blend_mode = 1
+
+[node name="Bullet" type="Node2D"]
+script = ExtResource("1_rdvah")
+
+[node name="bullet_area" type="Area2D" parent="."]
+collision_layer = 513
+script = ExtResource("2_4uhj5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bullet_area"]
+shape = SubResource("RectangleShape2D_h07yq")
+
+[node name="S" type="Sprite2D" parent="."]
+scale = Vector2(0.15625, 0.15625)
+texture = SubResource("GradientTexture2D_41qm3")
+
+[node name="red" type="ColorRect" parent="."]
+material = SubResource("CanvasItemMaterial_0mcv5")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0, 0, 1)
+
+[node name="blue" type="ColorRect" parent="."]
+material = ExtResource("2_tdgum")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 1, 1)
+
+[node name="green" type="ColorRect" parent="."]
+material = ExtResource("2_tdgum")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 1, 0, 1)
+
+[connection signal="area_entered" from="bullet_area" to="." method="_on_area_area_entered"]

@@ -1,0 +1,945 @@
+[gd_scene load_steps=38 format=3 uid="uid://dhgdpel3iclcj"]
+
+[ext_resource type="Script" path="res://scripts/information_hud.gd" id="1_3xqjv"]
+[ext_resource type="Texture2D" uid="uid://btm0gcfe8bfl4" path="res://sprites/Boarder.png" id="1_bms80"]
+[ext_resource type="FontFile" uid="uid://bwe56bqcr1gwg" path="res://Fonts/Minecraft.ttf" id="2_h3ehp"]
+[ext_resource type="PackedScene" uid="uid://i0b6sr564pel" path="res://TSCN Scenes/arrow.tscn" id="2_jkxmd"]
+[ext_resource type="FontFile" uid="uid://l72wifpkkgdx" path="res://Fonts/Daydream.ttf" id="3_oi6sm"]
+[ext_resource type="FontFile" uid="uid://b3m8vxs287lic" path="res://Fonts/Pixeled.ttf" id="4_1vhb7"]
+[ext_resource type="FontFile" uid="uid://cei4gt6f8w0ee" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="6_3gwas"]
+[ext_resource type="FontFile" uid="uid://dt45xpxux6otb" path="res://Fonts/Bitsential.otf" id="7_qrubq"]
+[ext_resource type="Texture2D" uid="uid://brtih4xlggm0s" path="res://sprites/icons/Lazer_icon.png" id="10_qmlo0"]
+[ext_resource type="Texture2D" uid="uid://cqih8y83qvglo" path="res://sprites/icons/plasma_icon.png" id="11_ds4af"]
+[ext_resource type="Texture2D" uid="uid://5qplmm00lyir" path="res://sprites/icons/Missile icon.png" id="12_vasy8"]
+[ext_resource type="Texture2D" uid="uid://dkbi6aomnllao" path="res://sprites/icons/Select.png" id="13_na42n"]
+[ext_resource type="AudioStream" uid="uid://dpt3tb5ei41ap" path="res://Music/sfx/select.wav" id="14_fw08u"]
+[ext_resource type="Shader" path="res://customs/pixelation.gdshader" id="14_p7cs3"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32anx"]
+bg_color = Color(0.133333, 0, 0.027451, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.8, 0.8, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wb3ef"]
+bg_color = Color(0.501961, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 0, 1)
+
+[sub_resource type="Theme" id="Theme_pxi04"]
+default_font = ExtResource("4_1vhb7")
+default_font_size = 0
+ProgressBar/colors/font_color = Color(1, 1, 1, 1)
+ProgressBar/colors/font_outline_color = Color(1, 1, 1, 1)
+ProgressBar/colors/font_shadow_color = Color(0, 0, 0, 1)
+ProgressBar/font_sizes/font_size = 20
+ProgressBar/styles/background = SubResource("StyleBoxFlat_32anx")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_wb3ef")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_avwjp"]
+bg_color = Color(0, 0, 0.305882, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.133333, 0.2, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ht2f"]
+bg_color = Color(0, 0, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_34cbd"]
+blend_mode = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8wtet"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0rr74"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k8duk"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.290196, 0.290196, 0.290196, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xe6gk"]
+bg_color = Color(0.313726, 0.313726, 0.313726, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p66b7"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d77uw"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_4k30y"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_p66b7")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_d77uw")
+
+[sub_resource type="Animation" id="Animation_kb7pk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(329, 119)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Select2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(330, 118)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Select2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_wb154"]
+resource_name = "select 1"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(330, 118)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Select2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(330, 118)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Select2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+
+[sub_resource type="Animation" id="Animation_veb0v"]
+resource_name = "select 2"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(332, 177)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Select2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Select2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(332, 176)]
+}
+
+[sub_resource type="Animation" id="Animation_24l8s"]
+resource_name = "select 3"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.5708]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(331, 231)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Select2:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(331, 230)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Select2:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m764v"]
+_data = {
+"RESET": SubResource("Animation_kb7pk"),
+"select 1": SubResource("Animation_wb154"),
+"select 2": SubResource("Animation_veb0v"),
+"select 3": SubResource("Animation_24l8s")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_45rot"]
+shader = ExtResource("14_p7cs3")
+shader_parameter/offset = 0.0
+
+[sub_resource type="Gradient" id="Gradient_luxqu"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1iw0j"]
+gradient = SubResource("Gradient_luxqu")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srseq"]
+bg_color = Color(0.6, 0.6, 0.6, 0.2)
+border_width_top = 5
+border_color = Color(0.0980392, 0.0980392, 0.0980392, 0.278431)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oglmm"]
+bg_color = Color(1, 0.156863, 0.247059, 1)
+border_width_bottom = 3
+border_color = Color(0.580392, 0.0941176, 0.141176, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_color = Color(0.65098, 0.105882, 0.156863, 1)
+
+[node name="Information HUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3xqjv")
+arr = ExtResource("2_jkxmd")
+
+[node name="Score" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.470588)
+texture_filter = 1
+layout_mode = 0
+offset_left = 29.0
+offset_top = 16.0
+offset_right = 427.0
+offset_bottom = 76.0
+scale = Vector2(0.825843, 0.825843)
+texture = ExtResource("1_bms80")
+draw_center = false
+region_rect = Rect2(-0.539673, -0.337435, 50.8091, 50.5388)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Score" type="Label" parent="Score"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 19.3741
+offset_top = -8.47619
+offset_right = 343.374
+offset_bottom = 159.524
+scale = Vector2(0.4, 0.4)
+theme_override_fonts/font = ExtResource("4_1vhb7")
+theme_override_font_sizes/font_size = 60
+text = "Score:"
+
+[node name="Score_value" type="Label" parent="Score"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 162.258
+offset_top = 10.898
+offset_right = 913.258
+offset_bottom = 142.898
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("3_oi6sm")
+theme_override_font_sizes/font_size = 100
+text = "12345678
+"
+horizontal_alignment = 2
+
+[node name="Health" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 1, 1, 0.403922)
+texture_filter = 1
+layout_mode = 0
+offset_left = 29.0
+offset_top = 76.0
+offset_right = 218.0
+offset_bottom = 215.0
+scale = Vector2(1.37114, 1.37114)
+texture = ExtResource("1_bms80")
+region_rect = Rect2(-0.539673, -0.337435, 50.8091, 50.5388)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Other Info" type="Label" parent="Health"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 10.0
+offset_top = 16.045
+offset_right = 125.0
+offset_bottom = 92.045
+theme_override_fonts/font = ExtResource("2_h3ehp")
+theme_override_font_sizes/font_size = 16
+text = "Player Info
+Type:
+Damage:
+Reload:
+Piercing:
+Bullet Spd:
+
+
+"
+
+[node name="Type" type="Label" parent="Health"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 56.1577
+offset_top = 36.466
+offset_right = 171.158
+offset_bottom = 74.466
+theme_override_fonts/font = ExtResource("2_h3ehp")
+theme_override_font_sizes/font_size = 16
+text = "??
+
+"
+
+[node name="piercing" type="Label" parent="Health"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 83.8718
+offset_top = 93.353
+offset_right = 198.872
+offset_bottom = 131.353
+theme_override_fonts/font = ExtResource("2_h3ehp")
+theme_override_font_sizes/font_size = 16
+text = "??
+
+"
+
+[node name="speed" type="Label" parent="Health"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 93.353
+offset_top = 112.315
+offset_right = 208.353
+offset_bottom = 150.315
+theme_override_fonts/font = ExtResource("2_h3ehp")
+theme_override_font_sizes/font_size = 16
+text = "??
+
+"
+
+[node name="reload" type="Label" parent="Health"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 71.4734
+offset_top = 74.3907
+offset_right = 186.473
+offset_bottom = 112.391
+theme_override_fonts/font = ExtResource("2_h3ehp")
+theme_override_font_sizes/font_size = 16
+text = "??
+
+"
+
+[node name="Damage_value" type="Label" parent="Health"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 83.1423
+offset_top = 55.8267
+offset_right = 198.142
+offset_bottom = 93.8267
+theme_override_fonts/font = ExtResource("2_h3ehp")
+theme_override_font_sizes/font_size = 16
+text = "??
+
+"
+
+[node name="Enemy_count" type="Label" parent="Health"]
+texture_filter = 3
+layout_mode = 2
+offset_left = -15.3157
+offset_top = 657.117
+offset_right = 279.684
+offset_bottom = 717.117
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("2_h3ehp")
+theme_override_font_sizes/font_size = 60
+text = "??"
+vertical_alignment = 1
+
+[node name="Resources" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 1, 0, 0.372549)
+texture_filter = 1
+layout_mode = 0
+offset_left = 843.0
+offset_top = 19.0
+offset_right = 1004.0
+offset_bottom = 82.0
+scale = Vector2(1.37114, 1.37114)
+texture = ExtResource("1_bms80")
+region_rect = Rect2(-0.539673, -0.337435, 50.8091, 50.5388)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Other Info" type="Label" parent="Resources"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 10.0
+offset_top = 16.0
+offset_right = 125.0
+offset_bottom = 52.0
+scale = Vector2(0.27, 0.27)
+theme_override_fonts/font = ExtResource("6_3gwas")
+theme_override_font_sizes/font_size = 60
+text = "Scraps:
+"
+
+[node name="scrap_value" type="Label" parent="Resources"]
+texture_filter = 1
+layout_mode = 2
+offset_left = 75.8493
+offset_top = 16.7744
+offset_right = 190.849
+offset_bottom = 133.774
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("7_qrubq")
+theme_override_font_sizes/font_size = 60
+text = "??
+
+"
+
+[node name="energy_value" type="Label" parent="Resources"]
+visible = false
+texture_filter = 1
+layout_mode = 2
+offset_left = 75.1199
+offset_top = 35.0074
+offset_right = 190.12
+offset_bottom = 73.0074
+theme_override_fonts/font = ExtResource("7_qrubq")
+theme_override_font_sizes/font_size = 16
+text = "??
+
+"
+
+[node name="ShopDetail" type="NinePatchRect" parent="."]
+self_modulate = Color(0.443137, 0.388235, 0, 1)
+texture_filter = 1
+layout_mode = 0
+offset_left = 1544.0
+offset_top = 903.0
+offset_right = 1804.0
+offset_bottom = 1021.0
+scale = Vector2(1.37114, 1.37114)
+texture = ExtResource("1_bms80")
+region_rect = Rect2(-0.539673, -0.337435, 50.8091, 50.5388)
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="line25Detail" type="Label" parent="ShopDetail"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+offset_left = 10.0
+offset_top = 16.0
+offset_right = 245.0
+offset_bottom = 70.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("6_3gwas")
+theme_override_font_sizes/font_size = 80
+text = "?????????????????????????
+?????????????????????????
+?????????????????????????"
+horizontal_alignment = 1
+
+[node name="upgradeRoute" type="Label" parent="ShopDetail"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+offset_left = 84.6011
+offset_top = 80.9545
+offset_right = 490.601
+offset_bottom = 175.955
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("7_qrubq")
+theme_override_font_sizes/font_size = 100
+text = "??  ==> ??"
+horizontal_alignment = 1
+
+[node name="healthbar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1556.0
+offset_top = 29.0
+offset_right = 1883.0
+offset_bottom = 77.0
+theme = SubResource("Theme_pxi04")
+theme_override_font_sizes/font_size = 15
+max_value = 50.0
+step = 0.0
+value = 50.0
+show_percentage = false
+
+[node name="shield" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 1556.0
+offset_top = 78.0
+offset_right = 1883.0
+offset_bottom = 101.0
+theme_override_font_sizes/font_size = 5
+theme_override_styles/background = SubResource("StyleBoxFlat_avwjp")
+theme_override_styles/fill = SubResource("StyleBoxFlat_1ht2f")
+max_value = 25.0
+step = 0.0
+value = 3.0
+show_percentage = false
+
+[node name="shieldLabel" type="Label" parent="shield"]
+material = SubResource("CanvasItemMaterial_34cbd")
+layout_mode = 0
+offset_left = 289.0
+offset_top = -2.0
+offset_right = 605.0
+offset_bottom = 222.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("4_1vhb7")
+theme_override_font_sizes/font_size = 80
+text = "???
+"
+horizontal_alignment = 2
+
+[node name="galaxyInfo" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 1045.0
+offset_right = 115.0
+offset_bottom = 1071.0
+theme_override_fonts/font = ExtResource("2_h3ehp")
+theme_override_font_sizes/font_size = 26
+text = "Wave:"
+
+[node name="difficulty" type="Label" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 0
+offset_left = 7.0
+offset_top = 1012.0
+offset_right = 150.0
+offset_bottom = 1042.0
+theme_override_fonts/font = ExtResource("2_h3ehp")
+theme_override_font_sizes/font_size = 26
+text = "Difficulty:"
+
+[node name="ShipHealth" type="Label" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 1824.0
+offset_top = 44.0
+offset_right = 1985.0
+offset_bottom = 124.0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("2_h3ehp")
+theme_override_font_sizes/font_size = 80
+text = "??"
+horizontal_alignment = 2
+
+[node name="shieldRegenStatus" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 1556.0
+offset_top = 102.0
+offset_right = 1883.0
+offset_bottom = 113.0
+theme_override_styles/background = SubResource("StyleBoxFlat_8wtet")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0rr74")
+max_value = 5.0
+value = 2.46
+show_percentage = false
+
+[node name="coolDown" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 1556.0
+offset_top = 116.0
+offset_right = 1883.0
+offset_bottom = 127.0
+theme_override_styles/background = SubResource("StyleBoxFlat_k8duk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xe6gk")
+max_value = 7.0
+value = 2.46
+show_percentage = false
+
+[node name="nextStage" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -240.0
+offset_top = -40.0
+offset_right = 542.0
+offset_bottom = -13.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.593707, 0.553957)
+theme = SubResource("Theme_4k30y")
+max_value = 3.0
+value = 2.5
+show_percentage = false
+
+[node name="nextStageTag" type="Label" parent="nextStage"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -87.0
+offset_right = 942.0
+offset_bottom = 103.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.3, 0.3)
+theme_override_fonts/font = ExtResource("7_qrubq")
+theme_override_font_sizes/font_size = 200
+text = "next stage..."
+horizontal_alignment = 1
+
+[node name="laser_display" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 281.0
+offset_right = 77.0
+offset_bottom = 321.0
+
+[node name="a" type="Sprite2D" parent="laser_display"]
+unique_name_in_owner = true
+position = Vector2(11, 8.99998)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_qmlo0")
+
+[node name="b" type="Sprite2D" parent="laser_display"]
+unique_name_in_owner = true
+position = Vector2(30, 9)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_qmlo0")
+
+[node name="c" type="Sprite2D" parent="laser_display"]
+unique_name_in_owner = true
+position = Vector2(50, 9)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_qmlo0")
+
+[node name="d" type="Sprite2D" parent="laser_display"]
+unique_name_in_owner = true
+position = Vector2(70, 9)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_qmlo0")
+
+[node name="e" type="Sprite2D" parent="laser_display"]
+unique_name_in_owner = true
+position = Vector2(90, 9)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_qmlo0")
+
+[node name="f" type="Sprite2D" parent="laser_display"]
+unique_name_in_owner = true
+position = Vector2(110, 9)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_qmlo0")
+
+[node name="g" type="Sprite2D" parent="laser_display"]
+unique_name_in_owner = true
+position = Vector2(130, 9)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_qmlo0")
+
+[node name="h" type="Sprite2D" parent="laser_display"]
+unique_name_in_owner = true
+position = Vector2(150, 9)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_qmlo0")
+
+[node name="i" type="Sprite2D" parent="laser_display"]
+unique_name_in_owner = true
+position = Vector2(170, 9)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_qmlo0")
+
+[node name="j" type="Sprite2D" parent="laser_display"]
+unique_name_in_owner = true
+position = Vector2(190, 9)
+rotation = -1.5708
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_qmlo0")
+
+[node name="PlasmaIcon" type="Sprite2D" parent="."]
+position = Vector2(330, 118.4)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("11_ds4af")
+
+[node name="MissileIcon" type="Sprite2D" parent="."]
+position = Vector2(331, 178)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("12_vasy8")
+
+[node name="LazerIcon" type="Sprite2D" parent="."]
+position = Vector2(330, 232)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_qmlo0")
+
+[node name="Select2" type="Sprite2D" parent="."]
+position = Vector2(330, 118)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("13_na42n")
+
+[node name="Select" type="Sprite2D" parent="."]
+position = Vector2(329, 119)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("13_na42n")
+
+[node name="audioSelect" type="AudioStreamPlayer" parent="Select"]
+stream = ExtResource("14_fw08u")
+bus = &"Sound"
+
+[node name="selectionP" type="AnimationPlayer" parent="Select"]
+libraries = {
+"": SubResource("AnimationLibrary_m764v")
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_45rot")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_1iw0j")
+
+[node name="anchor" type="Marker2D" parent="."]
+position = Vector2(960, 540)
+
+[node name="debug" type="Label" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 945.0
+offset_top = 487.0
+offset_right = 985.0
+offset_bottom = 510.0
+text = "f"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.07
+autostart = true
+
+[node name="eTarHealth" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 821.0
+offset_top = 131.0
+offset_right = 1090.0
+offset_bottom = 159.0
+theme_override_styles/background = SubResource("StyleBoxFlat_srseq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_oglmm")
+value = 50.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="eTarHealth"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -28.0
+offset_right = 761.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 100
+text = "????"
+horizontal_alignment = 1
+
+[node name="labol" type="Label" parent="eTarHealth"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = -58.0
+offset_right = 761.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 100
+text = "Target Health:"
+horizontal_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="displayTyme"]

@@ -1,0 +1,251 @@
+[gd_scene load_steps=25 format=3 uid="uid://dksi18f8f6qrp"]
+
+[ext_resource type="Texture2D" uid="uid://dcs0no4pwwbat" path="res://sprites/Shield.png" id="1_iknev"]
+[ext_resource type="Script" path="res://scripts/mother_ship.gd" id="1_te7s0"]
+[ext_resource type="Texture2D" uid="uid://ccd01focpmknk" path="res://sprites/Mothership.png" id="2_3be7w"]
+[ext_resource type="Material" uid="uid://cfivf1diefp6x" path="res://customs/add_color_material.tres" id="3_5ta2e"]
+[ext_resource type="AudioStream" uid="uid://b82wj7r6to0hh" path="res://Music/sfx/rocket_sound.wav" id="5_503pd"]
+[ext_resource type="Script" path="res://scripts/ship2D_area.gd" id="5_iosj6"]
+[ext_resource type="AudioStream" uid="uid://dnjju7nypa3pi" path="res://Music/sfx/hurt.wav" id="6_qlren"]
+[ext_resource type="AudioStream" uid="uid://bj8alq4rjvcx6" path="res://Music/sfx/dash.wav" id="7_xcdhi"]
+[ext_resource type="AudioStream" uid="uid://d3a1gprulxotv" path="res://Music/sfx/Bosshit.wav" id="9_akhik"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_7ch7v"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_4p5ok"]
+offsets = PackedFloat32Array(0.00507614, 1)
+colors = PackedColorArray(1, 1, 1, 0.305882, 0.317647, 0.490196, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mu68s"]
+gradient = SubResource("Gradient_4p5ok")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0lox5"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 32.49
+direction = Vector3(0, 100, 0)
+spread = 0.0
+angular_velocity_min = -720.0
+angular_velocity_max = 750.0
+gravity = Vector3(0, 0, 0)
+scale_min = 20.0
+scale_max = 20.0
+color_ramp = SubResource("GradientTexture1D_mu68s")
+
+[sub_resource type="Animation" id="Animation_8kboa"]
+resource_name = "Hurt"
+length = 0.3
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.23),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_p6ujl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fpcji"]
+_data = {
+"Hurt": SubResource("Animation_8kboa"),
+"RESET": SubResource("Animation_p6ujl")
+}
+
+[sub_resource type="Animation" id="Animation_j1onp"]
+resource_name = "Hit"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(-2, 1),
+"update": 0,
+"values": [Vector2(1.39, 1.39), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0.0470588, 0.219608, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_563xb"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lends"]
+_data = {
+"Hit": SubResource("Animation_j1onp"),
+"RESET": SubResource("Animation_563xb")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gamn1"]
+radius = 65.0692
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fog1u"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q58i0"]
+bg_color = Color(0.32549, 0, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3butg"]
+bg_color = Color(0, 0, 0, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bm0n4"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="MotherShip" type="CharacterBody2D"]
+script = ExtResource("1_te7s0")
+metadata/_edit_horizontal_guides_ = [-345.0]
+
+[node name="Mothership" type="Sprite2D" parent="."]
+rotation = -0.01036
+texture = ExtResource("2_3be7w")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Mothership"]
+z_index = -1
+material = SubResource("CanvasItemMaterial_7ch7v")
+position = Vector2(0, 50)
+amount = 2000
+process_material = SubResource("ParticleProcessMaterial_0lox5")
+lifetime = 0.1
+fixed_fps = 60
+collision_base_size = 0.0
+trail_lifetime = 10.0
+
+[node name="FlashHurt" type="AnimationPlayer" parent="Mothership"]
+libraries = {
+"": SubResource("AnimationLibrary_fpcji")
+}
+
+[node name="Shield" type="Sprite2D" parent="."]
+modulate = Color(5, 5, 5, 1)
+material = ExtResource("3_5ta2e")
+texture = ExtResource("1_iknev")
+
+[node name="shieldAnimation" type="AnimationPlayer" parent="Shield"]
+libraries = {
+"": SubResource("AnimationLibrary_lends")
+}
+
+[node name="ship2D" type="Area2D" parent="."]
+collision_layer = 257
+script = ExtResource("5_iosj6")
+
+[node name="Collision" type="CollisionShape2D" parent="ship2D"]
+visible = false
+shape = SubResource("CircleShape2D_gamn1")
+debug_color = Color(0.996078, 0, 0.207843, 0.419608)
+
+[node name="nocolide" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_gamn1")
+disabled = true
+debug_color = Color(0.996078, 0, 0.207843, 0.419608)
+
+[node name="DEBUG_SPEED" type="Label" parent="."]
+visible = false
+offset_left = -19.0
+offset_top = 99.0
+offset_right = 21.0
+offset_bottom = 122.0
+text = "??"
+
+[node name="rocket" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_503pd")
+volume_db = -80.0
+pitch_scale = 0.47
+autoplay = true
+bus = &"Sound"
+
+[node name="hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_qlren")
+bus = &"Sound"
+
+[node name="dashOGG" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_xcdhi")
+volume_db = -7.0
+bus = &"Sound"
+
+[node name="dashStatus" type="ProgressBar" parent="."]
+visible = false
+offset_left = -89.0
+offset_top = 102.0
+offset_right = 88.0
+offset_bottom = 110.0
+theme_override_styles/background = SubResource("StyleBoxFlat_fog1u")
+theme_override_styles/fill = SubResource("StyleBoxFlat_q58i0")
+max_value = 2.0
+value = 2.0
+show_percentage = false
+
+[node name="coolDown" type="ProgressBar" parent="."]
+visible = false
+offset_left = -89.0
+offset_top = 114.0
+offset_right = 88.0
+offset_bottom = 122.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3butg")
+theme_override_styles/fill = SubResource("StyleBoxFlat_bm0n4")
+max_value = 7.0
+show_percentage = false
+
+[node name="BossHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_akhik")
+bus = &"Sound"
+
+[connection signal="area_entered" from="ship2D" to="." method="_on_ship_2d_area_entered"]

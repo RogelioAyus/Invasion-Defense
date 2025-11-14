@@ -1,0 +1,84 @@
+[gd_scene load_steps=9 format=3 uid="uid://bvm81576vqlqe"]
+
+[ext_resource type="Script" path="res://scripts/shop_upgrade.gd" id="1_j1juk"]
+[ext_resource type="Texture2D" uid="uid://btm0gcfe8bfl4" path="res://sprites/Boarder.png" id="2_465hy"]
+[ext_resource type="FontFile" uid="uid://dt45xpxux6otb" path="res://Fonts/Bitsential.otf" id="3_b3cba"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_glky6"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(1, 1, 1, 0)
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t37oa"]
+content_margin_left = 2.0
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_agn4u"]
+content_margin_left = 2.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srwyw"]
+content_margin_left = 2.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+bg_color = Color(0.843137, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4ahhl"]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0862745, 0, 0.847059, 1)
+
+[node name="shopUpgrade" type="Node2D"]
+top_level = true
+script = ExtResource("1_j1juk")
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -29.0
+offset_right = 29.0
+offset_bottom = 29.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_glky6")
+theme_override_styles/hover = SubResource("StyleBoxFlat_t37oa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_agn4u")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_srwyw")
+icon = ExtResource("2_465hy")
+
+[node name="button sprite" type="Sprite2D" parent="Button"]
+unique_name_in_owner = true
+z_index = 3
+position = Vector2(29, 29)
+scale = Vector2(0.5625, 0.5625)
+
+[node name="level" type="Label" parent="."]
+visible = false
+texture_filter = 1
+offset_left = -26.0
+offset_top = 9.0
+offset_right = -10.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("3_b3cba")
+theme_override_font_sizes/font_size = 21
+theme_override_styles/normal = SubResource("StyleBoxFlat_4ahhl")
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

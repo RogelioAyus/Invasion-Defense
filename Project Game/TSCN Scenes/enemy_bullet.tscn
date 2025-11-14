@@ -1,0 +1,69 @@
+[gd_scene load_steps=9 format=3 uid="uid://dckjwppafec7x"]
+
+[ext_resource type="Script" path="res://scripts/enemy_bullet.gd" id="1_m05pw"]
+
+[sub_resource type="Gradient" id="Gradient_bftpk"]
+offsets = PackedFloat32Array(0.194357, 0.231975, 0.636364, 0.661442, 0.689655)
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0.501961, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_icawb"]
+gradient = SubResource("Gradient_bftpk")
+width = 20
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_bhwgi"]
+offsets = PackedFloat32Array(0.194357, 0.231975, 0.636364, 0.661442, 0.689655)
+colors = PackedColorArray(0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0.501961, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3u76u"]
+gradient = SubResource("Gradient_bhwgi")
+width = 20
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_i3qgw"]
+offsets = PackedFloat32Array(0.194357, 0.231975, 0.636364, 0.661442, 0.689655)
+colors = PackedColorArray(0, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0.501961, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_755ui"]
+gradient = SubResource("Gradient_i3qgw")
+width = 20
+height = 20
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_31o4c"]
+radius = 8.06226
+
+[node name="enemyBullet" type="Node2D"]
+script = ExtResource("1_m05pw")
+
+[node name="main" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("GradientTexture2D_icawb")
+
+[node name="0" type="Sprite2D" parent="main"]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("GradientTexture2D_3u76u")
+
+[node name="1" type="Sprite2D" parent="main"]
+scale = Vector2(1.5, 1.5)
+texture = SubResource("GradientTexture2D_755ui")
+
+[node name="enemyArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 256
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyArea"]
+shape = SubResource("CircleShape2D_31o4c")
+
+[node name="queue_free" type="Timer" parent="."]
+wait_time = 5.0
+autostart = true
+
+[connection signal="area_entered" from="enemyArea" to="." method="_on_enemy_area_area_entered"]
+[connection signal="timeout" from="queue_free" to="." method="death"]

@@ -1,0 +1,330 @@
+[gd_scene load_steps=25 format=3 uid="uid://db20u3b6g3sst"]
+
+[ext_resource type="Texture2D" uid="uid://xpmxqwf77lqk" path="res://sprites/boss/gs1.png" id="1_gaeo8"]
+[ext_resource type="Script" path="res://scripts/grave_starship.gd" id="1_qfilt"]
+[ext_resource type="PackedScene" uid="uid://ch30l4rytyq5d" path="res://TSCN Scenes/enemy.tscn" id="2_2tm4a"]
+[ext_resource type="PackedScene" uid="uid://cwcjdk2kwi2sl" path="res://TSCN Scenes/anti_bullet.tscn" id="2_2udcs"]
+[ext_resource type="Texture2D" uid="uid://y3bseskhff5" path="res://sprites/boss/gs2.png" id="2_04rp4"]
+[ext_resource type="PackedScene" uid="uid://dtcrfwhy4hn7v" path="res://TSCN Scenes/boss_death.tscn" id="2_etbyq"]
+[ext_resource type="Texture2D" uid="uid://b3chyhp4m4ssm" path="res://sprites/boss/gs3.png" id="3_ubv5e"]
+[ext_resource type="Texture2D" uid="uid://ca3t7p7cd8thh" path="res://sprites/boss/gs4.png" id="4_5lx1d"]
+[ext_resource type="FontFile" uid="uid://dt45xpxux6otb" path="res://Fonts/Bitsential.otf" id="7_2gxlu"]
+[ext_resource type="AudioStream" uid="uid://0vkboe2rusab" path="res://Music/sfx/aggressiveGrave.wav" id="10_475cg"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yrv3y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gaeo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_04rp4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ubv5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_5lx1d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_a3pn1"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bj48v"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_tmi6g"]
+offsets = PackedFloat32Array(0, 0.652038, 0.661442, 0.673981)
+colors = PackedColorArray(0.443067, 0, 0.172829, 1, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_280hb"]
+gradient = SubResource("Gradient_tmi6g")
+width = 500
+height = 500
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hrw0w"]
+radius = 555.504
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yu0sy"]
+bg_color = Color(0.6, 0, 0, 0)
+border_width_left = 10
+border_width_top = 4
+border_width_right = 3
+border_width_bottom = 4
+border_color = Color(1, 1, 1, 0.513726)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_26aj1"]
+bg_color = Color(0.996078, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hx20h"]
+bg_color = Color(0.6, 0, 0, 0)
+border_width_left = 10
+border_width_top = 4
+border_width_right = 3
+border_width_bottom = 4
+border_color = Color(0, 0, 1, 0.741176)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ysn0g"]
+bg_color = Color(0.298039, 0.509804, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ih8mw"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_f74cn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Asprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.694118)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ProgressBar:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("shield:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("vulnerable:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_eu0v5"]
+resource_name = "spawn"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Asprite:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.694118)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ProgressBar:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("shield:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("vulnerable:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wow0f"]
+_data = {
+"RESET": SubResource("Animation_f74cn"),
+"spawn": SubResource("Animation_eu0v5")
+}
+
+[node name="Grave Starship" type="Node2D"]
+script = ExtResource("1_qfilt")
+enemyScene = ExtResource("2_2tm4a")
+DeathParticle = ExtResource("2_etbyq")
+anti_missile = ExtResource("2_2udcs")
+
+[node name="Asprite" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_yrv3y")
+autoplay = "default"
+frame_progress = 0.853442
+
+[node name="g" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 0)
+material = SubResource("CanvasItemMaterial_a3pn1")
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_yrv3y")
+autoplay = "default"
+frame_progress = 0.282063
+
+[node name="g2" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 0, 0, 0)
+material = SubResource("CanvasItemMaterial_a3pn1")
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_yrv3y")
+autoplay = "default"
+frame_progress = 0.282063
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.694118)
+material = SubResource("CanvasItemMaterial_bj48v")
+position = Vector2(-1, 0)
+scale = Vector2(2.3, 2.3)
+texture = SubResource("GradientTexture2D_280hb")
+
+[node name="graveArea" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="graveArea"]
+visible = false
+polygon = PackedVector2Array(-17, -412, -270, 235, -150, 292, -167, 308, -123, 382, -27, 344, -35, 413, -59, 432, -4, 522, 57, 458, 35, 408, 19, 340, 86, 356, 115, 389, 171, 310, 149, 289, 271, 243, 18, -414)
+
+[node name="stopFire" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="stopFire"]
+shape = SubResource("CircleShape2D_hrw0w")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -377.0
+offset_top = 368.0
+offset_right = 3373.0
+offset_bottom = 511.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("7_2gxlu")
+theme_override_font_sizes/font_size = 99
+theme_override_styles/background = SubResource("StyleBoxFlat_yu0sy")
+theme_override_styles/fill = SubResource("StyleBoxFlat_26aj1")
+max_value = 100000.0
+value = 100000.0
+show_percentage = false
+
+[node name="Label" type="Label" parent="ProgressBar"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "12000/12000
+"
+horizontal_alignment = 1
+
+[node name="shield" type="ProgressBar" parent="."]
+offset_left = -377.0
+offset_top = 397.0
+offset_right = 3373.0
+offset_bottom = 427.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("7_2gxlu")
+theme_override_font_sizes/font_size = 99
+theme_override_styles/background = SubResource("StyleBoxFlat_hx20h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ysn0g")
+max_value = 10.0
+value = 10.0
+show_percentage = false
+
+[node name="vulnerable" type="ProgressBar" parent="."]
+offset_left = -377.0
+offset_top = 397.0
+offset_right = 3373.0
+offset_bottom = 427.0
+scale = Vector2(0.2, 0.2)
+theme_override_fonts/font = ExtResource("7_2gxlu")
+theme_override_font_sizes/font_size = 99
+theme_override_styles/background = SubResource("StyleBoxFlat_hx20h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ih8mw")
+max_value = 6.0
+value = 6.0
+show_percentage = false
+
+[node name="idle" type="AudioStreamPlayer" parent="."]
+bus = &"Sound"
+
+[node name="hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_475cg")
+volume_db = -13.0
+bus = &"Sound"
+
+[node name="spawn" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wow0f")
+}
+autoplay = "spawn"
+
+[connection signal="area_entered" from="graveArea" to="." method="_on_grave_area_area_entered"]

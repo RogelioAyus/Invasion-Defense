@@ -1,0 +1,182 @@
+[gd_scene load_steps=10 format=3 uid="uid://dohql761ujw11"]
+
+[ext_resource type="Script" path="res://scripts/enemy_laser.gd" id="1_54nd2"]
+[ext_resource type="AudioStream" uid="uid://dhkpy1nwk8s8u" path="res://Music/sfx/warnSignAhead.wav" id="2_cp5x6"]
+[ext_resource type="AudioStream" uid="uid://cd3g0p524htxn" path="res://Music/sfx/shootlaser_enemy.wav" id="3_ybm83"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8l2kt"]
+size = Vector2(3860, 10)
+
+[sub_resource type="Gradient" id="Gradient_e1283"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_nwaql"]
+gradient = SubResource("Gradient_e1283")
+width = 3860
+height = 10
+
+[sub_resource type="Animation" id="Animation_7nd3c"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("enemy_area_LAZA:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_r0kcp"]
+resource_name = "attack"
+length = 2.0
+step = 0.005
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.8, 1.817, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0), Color(1, 0, 0, 0.447059), Color(1, 0, 0, 0.447059), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.8, 1.805, 2),
+"transitions": PackedFloat32Array(-2, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 5), Vector2(1, 1), Vector2(1, 1), Vector2(1, 3), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("enemy_area_LAZA:monitoring")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.99),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("loading")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("fire")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.785),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3mxhk"]
+_data = {
+"RESET": SubResource("Animation_7nd3c"),
+"attack": SubResource("Animation_r0kcp")
+}
+
+[node name="enemy_laser" type="Node2D"]
+script = ExtResource("1_54nd2")
+
+[node name="enemy_area_LAZA" type="Area2D" parent="."]
+position = Vector2(0, -2)
+collision_layer = 0
+collision_mask = 256
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_area_LAZA"]
+position = Vector2(1930, 2)
+shape = SubResource("RectangleShape2D_8l2kt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 0)
+position = Vector2(1930, 0)
+scale = Vector2(1, 5)
+texture = SubResource("GradientTexture2D_nwaql")
+
+[node name="ap" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3mxhk")
+}
+
+[node name="loading" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cp5x6")
+volume_db = -13.0
+pitch_scale = 1.47
+bus = &"Sound"
+
+[node name="fire" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ybm83")
+volume_db = -13.0
+bus = &"Sound"
+
+[connection signal="area_entered" from="enemy_area_LAZA" to="." method="_on_enemy_area_laza_area_entered"]

@@ -1,0 +1,604 @@
+[gd_scene load_steps=35 format=3 uid="uid://ddq6i782mtc7k"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_x12mk"]
+[ext_resource type="Texture2D" uid="uid://chjthrh5mb3gr" path="res://sprites/NewLogo.png" id="2_er16y"]
+[ext_resource type="FontFile" uid="uid://bwe56bqcr1gwg" path="res://Fonts/Minecraft.ttf" id="4_1swod"]
+[ext_resource type="Texture2D" uid="uid://cg8byxcgi03qu" path="res://sprites/Logo.png" id="4_2e4vx"]
+[ext_resource type="FontFile" uid="uid://dt45xpxux6otb" path="res://Fonts/Bitsential.otf" id="4_jrlr3"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_xbjg1"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_1xird"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_blwee"]
+blend_mode = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_swlhh"]
+
+[sub_resource type="Gradient" id="Gradient_x241o"]
+offsets = PackedFloat32Array(0.0574713, 0.418118, 0.465517, 0.501742, 0.536585, 0.61324, 0.95977)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0.172549, 0.113725, 1, 0.917647, 0.141176, 0.384314, 1, 0.982874, 0.511767, 0.543393, 1, 0.882353, 0.32549, 0.258824, 1, 0.952941, 0.0823529, 0.0117647, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aaejb"]
+gradient = SubResource("Gradient_x241o")
+width = 500
+height = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6ricf"]
+texture = SubResource("GradientTexture2D_aaejb")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="Gradient" id="Gradient_0b58y"]
+offsets = PackedFloat32Array(0, 0.189655, 0.844828, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_l0i1f"]
+gradient = SubResource("Gradient_0b58y")
+width = 500
+height = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vohbm"]
+texture = SubResource("GradientTexture2D_l0i1f")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="Gradient" id="Gradient_j8cwh"]
+offsets = PackedFloat32Array(0.0574713, 0.367816, 0.465517, 0.557471, 0.655172, 0.95977)
+colors = PackedColorArray(1, 1, 1, 0, 0, 0.388235, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0.396078, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7un7c"]
+gradient = SubResource("Gradient_j8cwh")
+width = 500
+height = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_di612"]
+texture = SubResource("GradientTexture2D_7un7c")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p3quv"]
+
+[sub_resource type="Gradient" id="Gradient_fclmn"]
+offsets = PackedFloat32Array(0.0574713, 0.367816, 0.465517, 0.557471, 0.655172, 0.95977)
+colors = PackedColorArray(1, 1, 1, 0, 0, 0.388235, 1, 1, 0, 0, 1, 1, 0, 0, 1, 1, 0, 0.396078, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ogbeu"]
+gradient = SubResource("Gradient_fclmn")
+width = 500
+height = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kaje2"]
+texture = SubResource("GradientTexture2D_ogbeu")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="Gradient" id="Gradient_c5h1x"]
+offsets = PackedFloat32Array(0, 0.189655, 0.844828, 1)
+colors = PackedColorArray(1, 1, 1, 0, 0, 0.388235, 1, 1, 0, 0.396078, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wgiyk"]
+gradient = SubResource("Gradient_c5h1x")
+width = 500
+height = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fjuot"]
+texture = SubResource("GradientTexture2D_wgiyk")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ds0t"]
+texture = SubResource("GradientTexture2D_ogbeu")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="Gradient" id="Gradient_f7cnb"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.917647, 0.917647, 0.917647, 0, 0.446777, 0.446777, 0.446777, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_j2e58"]
+gradient = SubResource("Gradient_f7cnb")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xu0t5"]
+texture = SubResource("GradientTexture2D_j2e58")
+
+[sub_resource type="Animation" id="Animation_kwbco"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Title/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/Title/TextureRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0872665]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect/Label:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/VBoxContainer:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MarginContainer/Title/TextureRect:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-20, -308)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Logo:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_n5hgx"]
+resource_name = "Startup"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/Label:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.04885, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.5, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/VBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.8, 4.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MarginContainer/Title/TextureRect:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.7, 4.1),
+"transitions": PackedFloat32Array(1, -2, -2),
+"update": 0,
+"values": [Vector2(-17.5, -44), Vector2(-17.5, -44), Vector2(-20, -308)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MarginContainer/Title/TextureRect:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.3, 3.2, 3.5, 3.8, 4.1, 4.5),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, 1, -2, 1),
+"update": 0,
+"values": [Vector2(5, 5), Vector2(5, 5), Vector2(2, 2), Vector2(2.1, 2.1), Vector2(2, 2), Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hideColorRect"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Logo:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["wav", -1, 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_66tbk"]
+resource_name = "back"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Title/TextureRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-20, -308)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/Title/TextureRect:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MarginContainer/VBoxContainer:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0lua5"]
+resource_name = "wav"
+length = 12.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer/Title/TextureRect:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 8, 10, 12),
+"transitions": PackedFloat32Array(-2, -2, -2, -2, -2, -2, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1, 1), Vector2(1.3, 1.3), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer/Title/TextureRect:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4, 8, 12),
+"transitions": PackedFloat32Array(-2, -2, -2, -2),
+"update": 0,
+"values": [0.0, 0.0872665, -0.0872665, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ssymp"]
+_data = {
+"RESET": SubResource("Animation_kwbco"),
+"Startup": SubResource("Animation_n5hgx"),
+"back": SubResource("Animation_66tbk"),
+"wav": SubResource("Animation_0lua5")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x12mk")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 756.0
+offset_top = -91.0
+offset_right = -756.0
+offset_bottom = 93.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Title"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -308.0
+offset_right = 423.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.0872665
+pivot_offset = Vector2(221, 136)
+texture = ExtResource("2_er16y")
+stretch_mode = 5
+
+[node name="red" type="TextureRect" parent="MarginContainer/Title/TextureRect"]
+self_modulate = Color(1, 0, 0, 1)
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_xbjg1")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -221.5
+offset_right = 221.5
+offset_bottom = 272.0
+grow_horizontal = 2
+texture = ExtResource("2_er16y")
+stretch_mode = 5
+
+[node name="blue" type="TextureRect" parent="MarginContainer/Title/TextureRect"]
+self_modulate = Color(0, 0, 1, 1)
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_1xird")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -221.5
+offset_right = 221.5
+offset_bottom = 272.0
+grow_horizontal = 2
+texture = ExtResource("2_er16y")
+stretch_mode = 5
+
+[node name="green" type="TextureRect" parent="MarginContainer/Title/TextureRect"]
+self_modulate = Color(0, 1, 0, 1)
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_blwee")
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -221.5
+offset_right = 221.5
+offset_bottom = 272.0
+grow_horizontal = 2
+texture = ExtResource("2_er16y")
+stretch_mode = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="start" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_swlhh")
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_1swod")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_6ricf")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vohbm")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_di612")
+theme_override_styles/focus = SubResource("StyleBoxTexture_p3quv")
+text = "Start Game
+"
+
+[node name="tutorial" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_swlhh")
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_1swod")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_kaje2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fjuot")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0ds0t")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_xu0t5")
+theme_override_styles/focus = SubResource("StyleBoxTexture_p3quv")
+disabled = true
+text = "Tutorial
+"
+
+[node name="leaderboard" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_swlhh")
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_1swod")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_kaje2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fjuot")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0ds0t")
+theme_override_styles/focus = SubResource("StyleBoxTexture_p3quv")
+text = "Leaderboard
+"
+
+[node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_swlhh")
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_1swod")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_kaje2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fjuot")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0ds0t")
+theme_override_styles/focus = SubResource("StyleBoxTexture_p3quv")
+text = "Settings
+"
+
+[node name="credits" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_swlhh")
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_1swod")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_kaje2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fjuot")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0ds0t")
+theme_override_styles/focus = SubResource("StyleBoxTexture_p3quv")
+text = "Credits
+"
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_swlhh")
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_1swod")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxTexture_kaje2")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fjuot")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_0ds0t")
+theme_override_styles/focus = SubResource("StyleBoxTexture_p3quv")
+text = "Exit"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ssymp")
+}
+autoplay = "wav"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1945.0
+offset_bottom = 1099.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="ColorRect"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("4_jrlr3")
+theme_override_font_sizes/font_size = 50
+text = "Game Made by the EMC students:
+Rogelio D. Publico II
+Dean Salarda
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Logo" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(1788, 952)
+texture = ExtResource("4_2e4vx")
+
+[connection signal="button_down" from="MarginContainer/VBoxContainer/start" to="." method="_on_start_button_down"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/tutorial" to="." method="_button_tutorial"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/leaderboard" to="." method="_on_leaderboard_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/credits" to="." method="_show_credits"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

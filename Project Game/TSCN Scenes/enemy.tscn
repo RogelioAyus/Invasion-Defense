@@ -1,0 +1,460 @@
+[gd_scene load_steps=46 format=3 uid="uid://ch30l4rytyq5d"]
+
+[ext_resource type="Texture2D" uid="uid://o3ecrl3ogoif" path="res://sprites/Enemy_1_0.png" id="1_fxone"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_sqwr1"]
+[ext_resource type="PackedScene" uid="uid://bo6g25tp74b8o" path="res://TSCN Scenes/gainer.tscn" id="2_7vdol"]
+[ext_resource type="Texture2D" uid="uid://b3hxpmbwaixjr" path="res://sprites/Enemy_2_0.png" id="2_abl0p"]
+[ext_resource type="PackedScene" uid="uid://bf3pppy8b0g7n" path="res://TSCN Scenes/death_particle.tscn" id="2_gr06v"]
+[ext_resource type="Texture2D" uid="uid://kq1ngxhre64x" path="res://sprites/Enemy_1_1.png" id="2_kbkve"]
+[ext_resource type="Texture2D" uid="uid://pyfya23mrm66" path="res://sprites/Bubble1.png" id="3_76kuh"]
+[ext_resource type="PackedScene" uid="uid://dckjwppafec7x" path="res://TSCN Scenes/enemy_bullet.tscn" id="3_f47el"]
+[ext_resource type="Shader" path="res://customs/Blobbing_animation(Shader).gdshader" id="3_oegyk"]
+[ext_resource type="Texture2D" uid="uid://cevdi8tmaaej1" path="res://sprites/Enemy_2_1.png" id="3_ye50m"]
+[ext_resource type="PackedScene" uid="uid://dohql761ujw11" path="res://TSCN Scenes/enemy_laser.tscn" id="4_p2mly"]
+[ext_resource type="Script" path="res://scripts/shield_sprite.gd" id="4_x0tb6"]
+[ext_resource type="Texture2D" uid="uid://bjhvddf81rgpy" path="res://sprites/Enemy_3_0.png" id="4_xo3ng"]
+[ext_resource type="Texture2D" uid="uid://vq0i0xjlispv" path="res://sprites/Enemy_3_1.png" id="5_i5eri"]
+[ext_resource type="Texture2D" uid="uid://q14aj6etsf3l" path="res://sprites/Enemy_5_0.png" id="6_vteow"]
+[ext_resource type="Texture2D" uid="uid://cktuvfwpn6hto" path="res://sprites/abaso-1.png" id="7_b5rgm"]
+[ext_resource type="Texture2D" uid="uid://btvha5loqnckk" path="res://sprites/Enemy_5_1.png" id="7_xtqd8"]
+[ext_resource type="Texture2D" uid="uid://du1rypnnkbx2c" path="res://sprites/abaso-2.png" id="8_dwhlj"]
+[ext_resource type="AudioStream" uid="uid://d3hxek5m22bgx" path="res://Music/sfx/Glassbreak_enemy_died.wav" id="14_38lo7"]
+[ext_resource type="FontFile" uid="uid://cei4gt6f8w0ee" path="res://Fonts/VCR_OSD_MONO_1.001.ttf" id="14_h53qx"]
+[ext_resource type="AudioStream" uid="uid://bp88b7h3vwtu0" path="res://Music/sfx/spawnpoint.wav" id="15_dxhtj"]
+[ext_resource type="Shader" path="res://TSCN Scenes/enemy.gdshader" id="16_0b7ps"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ca0js"]
+shader = ExtResource("3_oegyk")
+shader_parameter/speedC = 20.0
+shader_parameter/strength = 2.0
+shader_parameter/differenciate = 3.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_14jbv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_b5rgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_dwhlj")
+}],
+"loop": true,
+"name": &"Abaso",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_abl0p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ye50m")
+}],
+"loop": true,
+"name": &"Armor",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xo3ng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i5eri")
+}],
+"loop": true,
+"name": &"Coiez",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_vteow")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_xtqd8")
+}],
+"loop": true,
+"name": &"Helepor",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_fxone")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kbkve")
+}],
+"loop": true,
+"name": &"Red",
+"speed": 5.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qibq"]
+shader = ExtResource("3_oegyk")
+shader_parameter/speedC = 1.0
+shader_parameter/strength = 20.0
+shader_parameter/differenciate = 1.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rwfx7"]
+radius = 32.0
+
+[sub_resource type="Animation" id="Animation_573a8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy AnimBase:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shield:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shield:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.25, 0.25)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:material:shader_parameter/offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [20.0]
+}
+
+[sub_resource type="Animation" id="Animation_uvryk"]
+resource_name = "hurt"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Enemy AnimBase:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shield:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.913725, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shield:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 0.0819202),
+"update": 0,
+"values": [Vector2(0.3, 0.3), Vector2(0.25, 0.25)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect:material:shader_parameter/offset")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [20.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s64vo"]
+_data = {
+"RESET": SubResource("Animation_573a8"),
+"hurt": SubResource("Animation_uvryk")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ls22r"]
+bg_color = Color(0.6, 0, 0, 0.54902)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_80u21"]
+bg_color = Color(0.862745, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_0pe84"]
+ProgressBar/styles/background = SubResource("StyleBoxFlat_ls22r")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_80u21")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxabl"]
+resource_local_to_scene = true
+shader = ExtResource("16_0b7ps")
+shader_parameter/offset = 20.0
+
+[sub_resource type="Gradient" id="Gradient_ub87o"]
+colors = PackedColorArray(0.978056, 0.978056, 0.978056, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_fa4v0"]
+gradient = SubResource("Gradient_ub87o")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 0.508547)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_v5bd2"]
+blend_mode = 1
+light_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_0wk8w"]
+offsets = PackedFloat32Array(0, 0.947735, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_pxn0r"]
+gradient = SubResource("Gradient_0wk8w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1yhki"]
+particle_flag_disable_z = true
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 200.0
+emission_ring_inner_radius = 200.0
+radial_velocity_min = -500.0
+radial_velocity_max = -500.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_pxn0r")
+
+[sub_resource type="Gradient" id="Gradient_p47m1"]
+offsets = PackedFloat32Array(0, 0.664577)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rd8mq"]
+gradient = SubResource("Gradient_p47m1")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e124i"]
+size = Vector2(20, 101)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_gd41a"]
+blend_mode = 1
+
+[sub_resource type="Gradient" id="Gradient_4n2c6"]
+offsets = PackedFloat32Array(0, 0.304075, 0.322884, 0.347962, 0.62069)
+colors = PackedColorArray(0, 0, 1, 0, 0.684677, 0.325233, 0.977065, 0.556863, 1, 1, 1, 0.486275, 0.21284, 0.439922, 1, 0.539915, 0, 0, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_s7y70"]
+gradient = SubResource("Gradient_4n2c6")
+width = 192
+height = 192
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="Enemy" type="CharacterBody2D"]
+floor_block_on_wall = false
+script = ExtResource("1_sqwr1")
+gainer = ExtResource("2_7vdol")
+DeathParticle = ExtResource("2_gr06v")
+bulletScene = ExtResource("3_f47el")
+laserScene = ExtResource("4_p2mly")
+
+[node name="Enemy AnimBase" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_ca0js")
+scale = Vector2(0.386667, 0.386667)
+sprite_frames = SubResource("SpriteFrames_14jbv")
+animation = &"Abaso"
+frame_progress = 0.55465
+
+[node name="Shield" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.45098)
+material = SubResource("ShaderMaterial_6qibq")
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_76kuh")
+script = ExtResource("4_x0tb6")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_rwfx7")
+disabled = true
+debug_color = Color(0, 0.658824, 0.894118, 0.419608)
+
+[node name="DEBUG" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = 40.0
+offset_right = 20.0
+offset_bottom = 66.0
+text = "??"
+
+[node name="enemy_area" type="Area2D" parent="."]
+collision_layer = 3
+priority = 1
+
+[node name="Detect" type="CollisionShape2D" parent="enemy_area"]
+shape = SubResource("CircleShape2D_rwfx7")
+debug_color = Color(0, 0.658824, 0.894118, 0.419608)
+
+[node name="death" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_38lo7")
+volume_db = -10.0
+bus = &"Sound"
+
+[node name="respawn" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_dxhtj")
+pitch_scale = 2.15
+bus = &"Sound"
+
+[node name="animate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_s64vo")
+}
+
+[node name="health" type="ProgressBar" parent="."]
+offset_left = -22.0
+offset_top = 38.0
+offset_right = 26.0
+offset_bottom = 45.0
+theme = SubResource("Theme_0pe84")
+theme_override_font_sizes/font_size = 11
+show_percentage = false
+
+[node name="hLab" type="Label" parent="health"]
+texture_filter = 1
+layout_mode = 0
+offset_left = 17.0
+offset_top = 9.0
+offset_right = 133.0
+offset_bottom = 97.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("14_h53qx")
+theme_override_font_sizes/font_size = 99
+text = "??"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_jxabl")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -141.0
+offset_right = 154.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+texture = SubResource("GradientTexture2D_fa4v0")
+
+[node name="spawn effect" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_v5bd2")
+emitting = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_1yhki")
+texture = SubResource("GradientTexture2D_rd8mq")
+lifetime = 0.4
+one_shot = true
+explosiveness = 0.7
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="timerLaser" type="Timer" parent="."]
+wait_time = 6.0
+
+[node name="timerSlowerLaser" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="fasterTimer" type="Timer" parent="."]
+
+[node name="shieldAnchor" type="Marker2D" parent="."]
+
+[node name="ost" type="Area2D" parent="shieldAnchor"]
+position = Vector2(0, -61)
+rotation = 1.57079
+collision_layer = 0
+collision_mask = 512
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shieldAnchor/ost"]
+shape = SubResource("RectangleShape2D_e124i")
+
+[node name="ost2" type="Area2D" parent="shieldAnchor"]
+position = Vector2(61, 0)
+collision_layer = 0
+collision_mask = 512
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shieldAnchor/ost2"]
+shape = SubResource("RectangleShape2D_e124i")
+
+[node name="Sprite2D" type="Sprite2D" parent="shieldAnchor/ost2"]
+material = SubResource("CanvasItemMaterial_gd41a")
+position = Vector2(-61, 0)
+rotation = 3.14159
+scale = Vector2(1.59784, 1.54989)
+texture = SubResource("GradientTexture2D_s7y70")
+
+[node name="ost4" type="Area2D" parent="shieldAnchor"]
+position = Vector2(0, 61)
+rotation = 1.57079
+collision_layer = 0
+collision_mask = 512
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shieldAnchor/ost4"]
+shape = SubResource("RectangleShape2D_e124i")
+
+[node name="ost5" type="Area2D" parent="shieldAnchor"]
+position = Vector2(-61, 0)
+rotation = 3.14159
+collision_layer = 0
+collision_mask = 512
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="shieldAnchor/ost5"]
+shape = SubResource("RectangleShape2D_e124i")
+
+[connection signal="area_entered" from="enemy_area" to="." method="_on_area_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="spawnbullet"]
+[connection signal="timeout" from="timerLaser" to="." method="spawnlaser"]
+[connection signal="timeout" from="timerSlowerLaser" to="." method="spawnlaser"]
+[connection signal="timeout" from="fasterTimer" to="." method="spawnbullet"]
+[connection signal="area_entered" from="shieldAnchor/ost" to="." method="_shield_detection"]
+[connection signal="area_entered" from="shieldAnchor/ost2" to="." method="_shield_detection"]
+[connection signal="area_entered" from="shieldAnchor/ost4" to="." method="_shield_detection"]
+[connection signal="area_entered" from="shieldAnchor/ost5" to="." method="_shield_detection"]

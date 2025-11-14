@@ -1,0 +1,79 @@
+[gd_scene load_steps=14 format=3 uid="uid://dtcrfwhy4hn7v"]
+
+[ext_resource type="Script" path="res://scripts/boss_death.gd" id="1_tyeg0"]
+[ext_resource type="AudioStream" uid="uid://bbevc0nuknw2w" path="res://Music/sfx/bossEmbryoDeath.wav" id="2_yjiyh"]
+
+[sub_resource type="Curve" id="Curve_hh4hw"]
+min_value = -360.0
+max_value = 360.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0936556, 360), 0.0, 0.0, 0, 0, Vector2(0.148036, -299.368), 0.0, 0.0, 0, 0, Vector2(0.196375, 360), 0.0, 0.0, 0, 0, Vector2(0.241692, -352.421), 0.0, 0.0, 0, 0, Vector2(0.268882, -246.316), 0.0, 0.0, 0, 0, Vector2(0.314199, 360), 0.0, 0.0, 0, 0, Vector2(0.338369, -360), 0.0, 0.0, 0, 0, Vector2(0.380665, 360), 0.0, 0.0, 0, 0, Vector2(0.432024, -344.842), 0.0, 0.0, 0, 0, Vector2(0.510574, -344.842), 0.0, 0.0, 0, 0, Vector2(0.513595, 360), 0.0, 0.0, 0, 0, Vector2(0.567976, 3.78946), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 14
+
+[sub_resource type="CurveTexture" id="CurveTexture_jjp62"]
+curve = SubResource("Curve_hh4hw")
+
+[sub_resource type="Gradient" id="Gradient_ist3c"]
+offsets = PackedFloat32Array(0.00666667, 0.04, 0.106667, 0.153333, 0.203333, 0.313333, 0.396667, 0.503333, 0.58, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 0, 0, 1, 1, 0.372549, 0, 1, 1, 0.139756, 0.0120511, 1, 1, 0.43052, 0.092392, 1, 1, 0, 0.211765, 1, 1, 0.407843, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_p28ob"]
+gradient = SubResource("Gradient_ist3c")
+
+[sub_resource type="Curve" id="Curve_nqtio"]
+min_value = -100.0
+max_value = 50.0
+_data = [Vector2(0.0120846, 0), 0.0, 0.0, 0, 0, Vector2(0.160121, -9.47369), 0.0, 0.0, 0, 0, Vector2(0.347432, -100), 0.0, 0.0, 0, 0, Vector2(0.507553, -1.05263), 24.029, 0.0, 0, 0, Vector2(0.522659, 48.4211), 0.0, 0.0, 0, 0, Vector2(0.567976, -0.526314), 0.0, 0.0, 0, 0, Vector2(0.812689, 21.5789), 0.0, 0.0, 0, 0, Vector2(1, 1.05263), 0.0, 0.0, 0, 0]
+point_count = 8
+
+[sub_resource type="CurveTexture" id="CurveTexture_2ymtk"]
+curve = SubResource("Curve_nqtio")
+
+[sub_resource type="Curve" id="Curve_fdadi"]
+max_value = 2.0
+_data = [Vector2(0, 2), 0.0, 0.0, 0, 0, Vector2(0.0725076, 0.0947368), 0.0, 0.0, 0, 0, Vector2(0.0966767, 0.936842), 0.0, 0.0, 0, 0, Vector2(0.135952, 0.2), 0.0, 0.0, 0, 0, Vector2(0.154079, 1), 0.0, 0.0, 0, 0, Vector2(0.202417, 0.705263), 0.0, 0.0, 0, 0, Vector2(0.226586, 0.157895), 0.0, 0.0, 0, 0, Vector2(0.241692, 0.842105), 0.0, 0.0, 0, 0, Vector2(0.280967, 0.231579), 0.0, 0.0, 0, 0, Vector2(0.311178, 0.0736842), 0.0, 0.0, 0, 0, Vector2(0.350453, 0.484211), 0.0, 0.0, 0, 0, Vector2(0.371601, 0.368421), 0.0, 0.0, 0, 0, Vector2(0.383686, 0.673684), 0.0, 0.0, 0, 0, Vector2(0.398792, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0421052), -6.31513, 0.0, 0, 0]
+point_count = 15
+
+[sub_resource type="CurveTexture" id="CurveTexture_0lor6"]
+curve = SubResource("Curve_fdadi")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jwsi1"]
+particle_flag_disable_z = true
+angle_min = -60.0
+angle_max = 60.0
+angle_curve = SubResource("CurveTexture_jjp62")
+spread = 180.0
+initial_velocity_min = -5.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+radial_accel_min = 30.0
+radial_accel_max = 100.0
+radial_accel_curve = SubResource("CurveTexture_2ymtk")
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_0lor6")
+color_ramp = SubResource("GradientTexture1D_p28ob")
+
+[sub_resource type="Gradient" id="Gradient_e5fxr"]
+colors = PackedColorArray(0.892308, 0.892308, 0.892308, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hh88d"]
+gradient = SubResource("Gradient_e5fxr")
+width = 10
+height = 10
+fill = 1
+fill_from = Vector2(0.517094, 0.491453)
+fill_to = Vector2(0.820513, 0.192308)
+
+[node name="BossDeath" type="GPUParticles2D"]
+emitting = false
+amount = 1000
+process_material = SubResource("ParticleProcessMaterial_jwsi1")
+texture = SubResource("GradientTexture2D_hh88d")
+lifetime = 5.0
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_tyeg0")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_yjiyh")
+volume_db = 5.0
+bus = &"Sound"

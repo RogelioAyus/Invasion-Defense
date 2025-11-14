@@ -1,0 +1,111 @@
+[gd_scene load_steps=9 format=3 uid="uid://dyb0ojqqjtjqw"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_sefh5"]
+[ext_resource type="Texture2D" uid="uid://c5pd5dvyxpyrg" path="res://sprites/Mouse.png" id="1_yp6aq"]
+[ext_resource type="Material" uid="uid://cfivf1diefp6x" path="res://customs/add_color_material.tres" id="3_vhcdo"]
+[ext_resource type="AudioStream" uid="uid://bpyi2v8baejif" path="res://Music/sfx/shoot.wav" id="4_77yv4"]
+[ext_resource type="Texture2D" uid="uid://btm0gcfe8bfl4" path="res://sprites/Boarder.png" id="5_yfk6c"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jcsln"]
+blend_mode = 1
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_bjpye"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ckab"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Player" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_sefh5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 5
+scale = Vector2(0.58, 0.58)
+texture = ExtResource("1_yp6aq")
+
+[node name="red" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(1, 0, 0, 1)
+z_index = -1
+material = SubResource("CanvasItemMaterial_jcsln")
+texture = ExtResource("1_yp6aq")
+
+[node name="blue" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 0, 1, 1)
+z_index = -1
+material = ExtResource("3_vhcdo")
+texture = ExtResource("1_yp6aq")
+
+[node name="green" type="Sprite2D" parent="Sprite2D"]
+modulate = Color(0, 1, 0, 1)
+z_index = -1
+material = ExtResource("3_vhcdo")
+texture = ExtResource("1_yp6aq")
+
+[node name="player" type="Area2D" parent="Sprite2D"]
+scale = Vector2(1.72414, 1.72414)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sprite2D/player"]
+polygon = PackedVector2Array(0, -2, -10, 37, -5, 37, -5, 57, 5, 57, 5, 37, 10, 37)
+
+[node name="audio" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_77yv4")
+bus = &"Sound"
+
+[node name="Control" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 68.0
+offset_top = 6.0
+offset_right = 108.0
+offset_bottom = 46.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+modulate = Color(1, 0.65098, 0, 1)
+layout_mode = 0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 188.0
+offset_bottom = 95.0
+texture = ExtResource("5_yfk6c")
+patch_margin_left = 30
+patch_margin_top = 30
+patch_margin_right = 30
+patch_margin_bottom = 30
+
+[node name="Control" type="Control" parent="Control/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 7.0
+offset_right = -8.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/NinePatchRect/Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 78.0
+
+[node name="info" type="Label" parent="Control/NinePatchRect/Control/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "????????????????????????
+??
+"
+
+[node name="s" type="ProgressBar" parent="."]
+offset_left = -26.0
+offset_top = 58.0
+offset_right = 28.0
+offset_bottom = 65.0
+theme_override_styles/background = SubResource("StyleBoxTexture_bjpye")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5ckab")
+show_percentage = false
+
+[connection signal="area_entered" from="Sprite2D/player" to="." method="_on_player_area_entered"]
+[connection signal="area_exited" from="Sprite2D/player" to="." method="_on_player_area_exited"]

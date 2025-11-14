@@ -1,0 +1,241 @@
+[gd_scene load_steps=14 format=3 uid="uid://b1mqecu1onymv"]
+
+[ext_resource type="Texture2D" uid="uid://bmvbqwhsl6dj1" path="res://sprites/TheEnd/Untitled_Artwork-1 2.png" id="1_liy44"]
+[ext_resource type="Script" path="res://scripts/the_end.gd" id="1_vlqtq"]
+[ext_resource type="Texture2D" uid="uid://bpuvhkka5as4f" path="res://sprites/TheEnd/Untitled_Artwork-2 2.png" id="2_qevcp"]
+[ext_resource type="Texture2D" uid="uid://cxuyq0tyj6nab" path="res://sprites/TheEnd/Untitled_Artwork-3.png" id="3_45wfx"]
+[ext_resource type="Texture2D" uid="uid://cx8o42cxwt62a" path="res://sprites/TheEnd/Untitled_Artwork-4.png" id="4_b3f1x"]
+[ext_resource type="Texture2D" uid="uid://ck0ynahm5nm6h" path="res://sprites/TheEnd/Untitled_Artwork-5.png" id="5_ihr4i"]
+[ext_resource type="Texture2D" uid="uid://c7dblktqdntvl" path="res://sprites/TheEnd/Untitled_Artwork-6.png" id="6_45lv0"]
+[ext_resource type="PackedScene" uid="uid://dyb0ojqqjtjqw" path="res://TSCN Scenes/player.tscn" id="8_afu2g"]
+
+[sub_resource type="Gradient" id="Gradient_m7a1j"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ne68v"]
+gradient = SubResource("Gradient_m7a1j")
+
+[sub_resource type="Animation" id="Animation_kttg0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker2D/a:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D/b:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker2D/c:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D/d:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Marker2D/e:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Marker2D/f:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_no2xg"]
+resource_name = "comic"
+length = 17.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Marker2D/a:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Marker2D/b:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Marker2D/c:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6, 8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Marker2D/d:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 9, 11),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Marker2D/e:self_modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 12, 14),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Marker2D/f:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 17, 17.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rmdol"]
+_data = {
+"RESET": SubResource("Animation_kttg0"),
+"comic": SubResource("Animation_no2xg")
+}
+
+[node name="TheEnd" type="Node2D"]
+script = ExtResource("1_vlqtq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1081.0
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_ne68v")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 49.0001
+offset_top = 1019.0
+offset_right = 1138.0
+offset_bottom = 1162.0
+scale = Vector2(0.3, 0.3)
+theme_override_font_sizes/font_size = 99
+text = "Go back to main menu"
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(976, 529)
+scale = Vector2(2.645, 2.645)
+
+[node name="a" type="Sprite2D" parent="Marker2D"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("1_liy44")
+
+[node name="b" type="Sprite2D" parent="Marker2D"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("2_qevcp")
+
+[node name="c" type="Sprite2D" parent="Marker2D"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("3_45wfx")
+
+[node name="d" type="Sprite2D" parent="Marker2D"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("4_b3f1x")
+
+[node name="e" type="Sprite2D" parent="Marker2D"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("5_ihr4i")
+
+[node name="f" type="Sprite2D" parent="Marker2D"]
+self_modulate = Color(1, 1, 1, 0)
+texture = ExtResource("6_45lv0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rmdol")
+}
+
+[node name="Player" parent="." instance=ExtResource("8_afu2g")]
+isGameOn = false
+
+[connection signal="pressed" from="Control/Button" to="." method="_on_button_pressed"]

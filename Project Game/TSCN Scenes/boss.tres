@@ -1,0 +1,31 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://v4uhnk8ytqo3"]
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_4qehi"]
+function = 0
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_puebv"]
+function = 1
+
+[sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_5by22"]
+
+[sub_resource type="VisualShaderNodeVectorCompose" id="VisualShaderNodeVectorCompose_o8p30"]
+default_input_values = [0, 0.0, 1, 0.0, 2, 0.0, 3, 0.0]
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/2/node = SubResource("VisualShaderNodeFloatFunc_4qehi")
+nodes/fragment/2/position = Vector2(-140, 180)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatFunc_puebv")
+nodes/fragment/3/position = Vector2(-140, 260)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorFunc_5by22")
+nodes/fragment/5/position = Vector2(100, 80)
+nodes/fragment/6/node = SubResource("VisualShaderNodeVectorCompose_o8p30")
+nodes/fragment/6/position = Vector2(120, 220)
+nodes/fragment/connections = PackedInt32Array(2, 0, 6, 0, 3, 0, 6, 1)
